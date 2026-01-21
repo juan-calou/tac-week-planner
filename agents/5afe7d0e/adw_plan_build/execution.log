@@ -1,0 +1,5 @@
+2026-01-21 10:27:22 - INFO - ADW Logger initialized - ID: 5afe7d0e
+2026-01-21 10:27:22 - DEBUG - Log file: /Users/muni/code/tac-week-planner/agents/5afe7d0e/adw_plan_build/execution.log
+2026-01-21 10:27:22 - INFO - ADW ID: 5afe7d0e
+2026-01-21 10:27:22 - ERROR - Error: Missing required environment variables:
+2026-01-21 10:27:22 - ERROR -   - CLAUDE_CODE_PATH
