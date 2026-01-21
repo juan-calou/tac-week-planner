@@ -1,0 +1,18 @@
+[
+  {
+    "session_id": "f517482d-b81e-4ac6-b247-66ed4b849506",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "f517482d-b81e-4ac6-b247-66ed4b849506",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  }
+]

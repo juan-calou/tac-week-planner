@@ -1,0 +1,22 @@
+[
+  {
+    "session_id": "f517482d-b81e-4ac6-b247-66ed4b849506",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "ae36142",
+    "agent_transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506/subagents/agent-ae36142.jsonl"
+  },
+  {
+    "session_id": "f517482d-b81e-4ac6-b247-66ed4b849506",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "ab281b4",
+    "agent_transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/f517482d-b81e-4ac6-b247-66ed4b849506/subagents/agent-ab281b4.jsonl"
+  }
+]
