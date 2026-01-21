@@ -1,0 +1,41 @@
+[
+  {
+    "session_id": "007db5fd-9ebb-4d4f-ba1a-11f4448e62c9",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git checkout main",
+      "description": "Switch to main branch"
+    },
+    "tool_use_id": "toolu_01YbGzw7y6YqabTR6HWBD8LB"
+  },
+  {
+    "session_id": "007db5fd-9ebb-4d4f-ba1a-11f4448e62c9",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git pull",
+      "description": "Pull latest changes from main"
+    },
+    "tool_use_id": "toolu_01YGkYwhWieZ7aPVSX6j7vsB"
+  },
+  {
+    "session_id": "007db5fd-9ebb-4d4f-ba1a-11f4448e62c9",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git checkout -b bug-7-7b0f8cf5-fix-add-task-bugs",
+      "description": "Create and switch to new branch"
+    },
+    "tool_use_id": "toolu_01TAuG33hBsUpDEdSKyv2kJr"
+  }
+]

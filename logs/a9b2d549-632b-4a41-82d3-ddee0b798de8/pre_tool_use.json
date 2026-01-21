@@ -1,0 +1,52 @@
+[
+  {
+    "session_id": "a9b2d549-632b-4a41-82d3-ddee0b798de8",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a9b2d549-632b-4a41-82d3-ddee0b798de8.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "app/client/src/app/services/task.service.ts"
+    },
+    "tool_use_id": "toolu_01LLsfHBUJUu7b3kfMAv7wPA"
+  },
+  {
+    "session_id": "a9b2d549-632b-4a41-82d3-ddee0b798de8",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a9b2d549-632b-4a41-82d3-ddee0b798de8.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "app/client/src/app/app.component.html"
+    },
+    "tool_use_id": "toolu_01Lx5hS3pWjSWEMaEeb5PHrS"
+  },
+  {
+    "session_id": "a9b2d549-632b-4a41-82d3-ddee0b798de8",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a9b2d549-632b-4a41-82d3-ddee0b798de8.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "ls -la specs/",
+      "description": "List specs directory contents"
+    },
+    "tool_use_id": "toolu_01Jxq97kii9G1689Exn1iKUZ"
+  },
+  {
+    "session_id": "a9b2d549-632b-4a41-82d3-ddee0b798de8",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a9b2d549-632b-4a41-82d3-ddee0b798de8.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/specs/bug-7-fix-add-task-bugs.md",
+      "content": "# Bug: Fix Add Task Bugs\n\n## Bug Description\nThere are two bugs in the add task functionality:\n\n1. **Wrong Day Assignment**: When adding a task by selecting a date in the modal, the task appears in the previous day instead of the selected day. For example, selecting Wednesday's date results in the task appearing on Tuesday.\n\n2. **Missing Right Margin in Modal**: The form inputs in the \"Add New Task\" modal extend fully to the right edge without proper spacing, creating a cramped appearance and poor visual balance.\n\n## Problem Statement\nThe date-to-day-of-week conversion has a timezone issue causing tasks to be assigned to the wrong day, and the modal form inputs need proper spacing for better UI/UX.\n\n## Solution Statement\nFix the timezone handling in the `getDayOfWeekFromDate()` method to use the date string directly without timezone conversion, and add proper padding/box-sizing to the modal form inputs to create appropriate right margin spacing.\n\n## Steps to Reproduce\n\n### Bug 1: Wrong Day Assignment\n1. Open the application in the browser\n2. Click \"Add New Task\" button\n3. Select any date (e.g., Wednesday, January 22, 2026)\n4. Fill in title, description, and task type\n5. Click \"Create Task\"\n6. Observe the task appears in the previous day (Tuesday) instead of the selected day (Wednesday)\n\n### Bug 2: Missing Right Margin\n1. Open the application in the browser\n2. Click \"Add New Task\" button\n3. Observe the modal form inputs (date, title, description, task type dropdown)\n4. Notice the input fields extend all the way to the right edge without proper spacing\n\n## Root Cause Analysis\n\n### Bug 1: Timezone Issue\nThe root cause is in `app/client/src/app/app.component.ts:148-152`. The `getDayOfWeekFromDate()` method receives a date from the date input field, which is a string in format \"YYYY-MM-DD\". When this string is converted to a JavaScript Date object using `new Date(date)`, it's treated as UTC midnight. The `.getDay()` method then returns the day in the local timezone, which can shift the day backward by one if the local timezone is behind UTC.\n\nFor example:\n- Selected date: \"2026-01-22\" (Wednesday)\n- `new Date(\"2026-01-22\")` creates a Date at UTC midnight\n- `.getDay()` converts to local timezone (e.g., PST = UTC-8)\n- Result: 2026-01-21 23:00:00 PST (Tuesday)\n\n### Bug 2: CSS Box Model Issue\nThe root cause is in `app/client/src/app/app.component.css:270-280`. The form inputs use `width: 100%` which makes them extend to fill the entire container width. While there is left padding from the `.modal-form` (1.5rem), the inputs themselves don't account for their own padding and border in the width calculation, and there's no explicit right margin or padding consideration.\n\n## Relevant Files\nUse these files to fix the bug:\n\n- **app/client/src/app/app.component.ts** - Contains the `getDayOfWeekFromDate()` method that needs timezone fix. This method converts the selected date to a day of week name (line 148-152).\n\n- **app/client/src/app/app.component.css** - Contains the modal and form styling. The `.form-group input, .form-group textarea, .form-group select` rules (line 270-280) need adjustment for proper spacing.\n\n## Step by Step Tasks\n\n### Fix Date Timezone Issue\n- Modify the `getDayOfWeekFromDate()` method in `app/client/src/app/app.component.ts` to handle date strings properly without timezone conversion\n- Instead of using `new Date(date).getDay()` which causes timezone issues, parse the date string directly or use UTC methods to ensure the correct day is selected\n- The fix should extract the day of week from the date input value without timezone shifts\n\n### Fix Modal Form Input Spacing\n- Update the CSS rules for form inputs in `app/client/src/app/app.component.css`\n- Change the `.form-group input, .form-group textarea, .form-group select` width from `100%` to `calc(100% - 1rem)` or add `box-sizing: border-box` with appropriate right margin\n- Ensure all form inputs have consistent right spacing that matches the visual balance of the left spacing\n- Verify the modal looks properly spaced on different screen sizes\n\n### Validation and Testing\n- Test the date-to-day conversion fix by creating tasks for each day of the week and verifying they appear in the correct day column\n- Verify that selecting Monday through Sunday dates results in tasks appearing in the correct corresponding day\n- Check the modal appearance to ensure form inputs have proper right margin spacing\n- Test on different screen sizes to ensure responsive behavior is maintained\n- Run the validation commands to ensure no regressions\n\n## Validation Commands\nExecute every command to validate the bug is fixed with zero regressions.\n\n- Manual test: Open the app, click \"Add New Task\", select various dates across the week, create tasks, and verify each task appears in the correct day column matching the selected date\n- Manual test: Open the app, click \"Add New Task\", inspect the modal form inputs to confirm there is appropriate right margin/spacing (approximately 1.5rem to match left padding)\n- `cd app/server && uv run pytest` - Run server tests to validate the bug is fixed with zero regressions\n\n## Notes\n- The date input field in HTML returns a string in \"YYYY-MM-DD\" format, not a Date object\n- When converting date strings to Date objects, be mindful of timezone interpretations (ISO format without time is treated as UTC)\n- For UI consistency, the right spacing in the modal should mirror the left spacing provided by `.modal-form` padding (1.5rem)\n- Consider using `box-sizing: border-box` which is a best practice for form inputs to include padding and border in the width calculation\n"
+    },
+    "tool_use_id": "toolu_01YbPH1hpKjWS7kHAGXR7U7A"
+  }
+]

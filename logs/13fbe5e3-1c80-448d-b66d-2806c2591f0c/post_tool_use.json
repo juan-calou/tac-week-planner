@@ -1,0 +1,59 @@
+[
+  {
+    "session_id": "13fbe5e3-1c80-448d-b66d-2806c2591f0c",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/13fbe5e3-1c80-448d-b66d-2806c2591f0c.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Show changes made since last commit"
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01TKMPBoExJWPFJ7cdNNtts4"
+  },
+  {
+    "session_id": "13fbe5e3-1c80-448d-b66d-2806c2591f0c",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/13fbe5e3-1c80-448d-b66d-2806c2591f0c.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git status",
+      "description": "Check git status for untracked files"
+    },
+    "tool_response": {
+      "stdout": "On branch bug-7-7b0f8cf5-fix-add-task-bugs\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\tagents/7b0f8cf5/\n\tlogs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/\n\tlogs/13fbe5e3-1c80-448d-b66d-2806c2591f0c/\n\tlogs/296d25d8-99cf-4761-b5f0-0cf634feb8d7/\n\tlogs/86f39701-3038-441c-8cca-6768bb6506b0/\n\tlogs/a9b2d549-632b-4a41-82d3-ddee0b798de8/\n\tspecs/bug-7-fix-add-task-bugs.md\n\nnothing added to commit but untracked files present (use \"git add\" to track)",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01973VuZHu7R6XxxBoimEdgm"
+  },
+  {
+    "session_id": "13fbe5e3-1c80-448d-b66d-2806c2591f0c",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/13fbe5e3-1c80-448d-b66d-2806c2591f0c.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"sdlc_planner: bug: add task bugs specification\"",
+      "description": "Stage and commit all changes"
+    },
+    "tool_response": {
+      "stdout": "[bug-7-7b0f8cf5-fix-add-task-bugs 08d3eef] sdlc_planner: bug: add task bugs specification\n 30 files changed, 5218 insertions(+)\n create mode 100644 agents/7b0f8cf5/adw_plan_build/execution.log\n create mode 100644 agents/7b0f8cf5/branch_generator/prompts/generate_branch_name.txt\n create mode 100644 agents/7b0f8cf5/branch_generator/raw_output.json\n create mode 100644 agents/7b0f8cf5/branch_generator/raw_output.jsonl\n create mode 100644 agents/7b0f8cf5/issue_classifier/prompts/classify_issue.txt\n create mode 100644 agents/7b0f8cf5/issue_classifier/raw_output.json\n create mode 100644 agents/7b0f8cf5/issue_classifier/raw_output.jsonl\n create mode 100644 agents/7b0f8cf5/plan_finder/prompts/find_plan_file.txt\n create mode 100644 agents/7b0f8cf5/plan_finder/raw_output.json\n create mode 100644 agents/7b0f8cf5/plan_finder/raw_output.jsonl\n create mode 100644 agents/7b0f8cf5/sdlc_planner/prompts/bug.txt\n create mode 100644 agents/7b0f8cf5/sdlc_planner/raw_output.json\n create mode 100644 agents/7b0f8cf5/sdlc_planner/raw_output.jsonl\n create mode 100644 agents/7b0f8cf5/sdlc_planner_committer/prompts/commit.txt\n create mode 100644 agents/7b0f8cf5/sdlc_planner_committer/raw_output.jsonl\n create mode 100644 logs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/chat.json\n create mode 100644 logs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/post_tool_use.json\n create mode 100644 logs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/pre_tool_use.json\n create mode 100644 logs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/stop.json\n create mode 100644 logs/13fbe5e3-1c80-448d-b66d-2806c2591f0c/post_tool_use.json\n create mode 100644 logs/13fbe5e3-1c80-448d-b66d-2806c2591f0c/pre_tool_use.json\n create mode 100644 logs/296d25d8-99cf-4761-b5f0-0cf634feb8d7/chat.json\n create mode 100644 logs/296d25d8-99cf-4761-b5f0-0cf634feb8d7/stop.json\n create mode 100644 logs/86f39701-3038-441c-8cca-6768bb6506b0/chat.json\n create mode 100644 logs/86f39701-3038-441c-8cca-6768bb6506b0/stop.json\n create mode 100644 logs/a9b2d549-632b-4a41-82d3-ddee0b798de8/chat.json\n create mode 100644 logs/a9b2d549-632b-4a41-82d3-ddee0b798de8/post_tool_use.json\n create mode 100644 logs/a9b2d549-632b-4a41-82d3-ddee0b798de8/pre_tool_use.json\n create mode 100644 logs/a9b2d549-632b-4a41-82d3-ddee0b798de8/stop.json\n create mode 100644 specs/bug-7-fix-add-task-bugs.md",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01GwprfFm4ijApqfxNmXJuxC"
+  }
+]

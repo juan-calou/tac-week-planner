@@ -1,0 +1,6 @@
+/bug Fix add task bugs: /bug
+
+When I add a task it shows in the previous date.
+
+Also, add right margin to the add new task modal (image attached)
+![Image](https://github.com/user-attachments/assets/3ba71673-4a66-452b-82ad-5e364cf75e62)

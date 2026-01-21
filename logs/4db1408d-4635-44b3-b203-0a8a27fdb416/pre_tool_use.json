@@ -1,0 +1,108 @@
+[
+  {
+    "session_id": "4db1408d-4635-44b3-b203-0a8a27fdb416",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4db1408d-4635-44b3-b203-0a8a27fdb416.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Fix date timezone issue in getDayOfWeekFromDate()",
+          "status": "completed",
+          "activeForm": "Fixing date timezone issue in getDayOfWeekFromDate()"
+        },
+        {
+          "content": "Fix modal form input spacing",
+          "status": "completed",
+          "activeForm": "Fixing modal form input spacing"
+        },
+        {
+          "content": "Test date-to-day conversion for all days of the week",
+          "status": "completed",
+          "activeForm": "Testing date-to-day conversion for all days of the week"
+        },
+        {
+          "content": "Run server tests to validate no regressions",
+          "status": "in_progress",
+          "activeForm": "Running server tests to validate no regressions"
+        }
+      ]
+    },
+    "tool_use_id": "toolu_01DWFXaTxkQmuRSc2iUa8tsN"
+  },
+  {
+    "session_id": "4db1408d-4635-44b3-b203-0a8a27fdb416",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4db1408d-4635-44b3-b203-0a8a27fdb416.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cd app/server && uv run pytest",
+      "timeout": 120000,
+      "description": "Run server tests to validate no regressions"
+    },
+    "tool_use_id": "toolu_01Epur9kgpsqS1MD94wZSTLc"
+  },
+  {
+    "session_id": "4db1408d-4635-44b3-b203-0a8a27fdb416",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4db1408d-4635-44b3-b203-0a8a27fdb416.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Fix date timezone issue in getDayOfWeekFromDate()",
+          "status": "completed",
+          "activeForm": "Fixing date timezone issue in getDayOfWeekFromDate()"
+        },
+        {
+          "content": "Fix modal form input spacing",
+          "status": "completed",
+          "activeForm": "Fixing modal form input spacing"
+        },
+        {
+          "content": "Test date-to-day conversion for all days of the week",
+          "status": "completed",
+          "activeForm": "Testing date-to-day conversion for all days of the week"
+        },
+        {
+          "content": "Run server tests to validate no regressions",
+          "status": "completed",
+          "activeForm": "Running server tests to validate no regressions"
+        }
+      ]
+    },
+    "tool_use_id": "toolu_01J6tMMEMFhvQqAWBDtsdYTQ"
+  },
+  {
+    "session_id": "4db1408d-4635-44b3-b203-0a8a27fdb416",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4db1408d-4635-44b3-b203-0a8a27fdb416.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "pkill -f \"uvicorn app.main:app\" && pkill -f \"ng serve\"",
+      "description": "Stop background servers"
+    },
+    "tool_use_id": "toolu_01LedBk9Sf1z3bjTq68hFbsP"
+  },
+  {
+    "session_id": "4db1408d-4635-44b3-b203-0a8a27fdb416",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4db1408d-4635-44b3-b203-0a8a27fdb416.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff --stat",
+      "description": "Show git diff statistics"
+    },
+    "tool_use_id": "toolu_018wiN6uTCtTTqZeNm92tYDU"
+  }
+]
