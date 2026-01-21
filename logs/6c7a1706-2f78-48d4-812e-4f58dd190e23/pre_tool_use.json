@@ -1,0 +1,41 @@
+[
+  {
+    "session_id": "6c7a1706-2f78-48d4-812e-4f58dd190e23",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/6c7a1706-2f78-48d4-812e-4f58dd190e23.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check what changes have been made"
+    },
+    "tool_use_id": "toolu_01GNPaVywRXtXVgxtPLCKkJn"
+  },
+  {
+    "session_id": "6c7a1706-2f78-48d4-812e-4f58dd190e23",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/6c7a1706-2f78-48d4-812e-4f58dd190e23.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git status",
+      "description": "Check git status for untracked files"
+    },
+    "tool_use_id": "toolu_01BuEuYNt384FaAnBp78wodA"
+  },
+  {
+    "session_id": "6c7a1706-2f78-48d4-812e-4f58dd190e23",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/6c7a1706-2f78-48d4-812e-4f58dd190e23.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"sdlc_planner: feature: add edit/delete task spec\"",
+      "description": "Stage all changes and create commit"
+    },
+    "tool_use_id": "toolu_01TqFrVmSmkBiEBRyvmi3Yde"
+  }
+]

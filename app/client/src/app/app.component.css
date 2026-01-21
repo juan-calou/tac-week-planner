@@ -134,6 +134,8 @@ main {
   margin-bottom: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .task-card:hover {
@@ -190,6 +192,49 @@ main {
 .task-type-other .task-type-badge {
   background-color: #fff3e0;
   color: #e67e22;
+}
+
+/* Task Content and Actions */
+.task-content {
+  flex: 1;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.action-icon {
+  background: none;
+  border: none;
+  padding: 0.375rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  color: #666;
+}
+
+.action-icon:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.1);
+}
+
+.edit-icon:hover {
+  color: #4a90e2;
+}
+
+.delete-icon:hover {
+  color: #e74c3c;
+}
+
+.action-icon svg {
+  display: block;
 }
 
 /* Modal Styles */
@@ -345,6 +390,80 @@ main {
   transform: translateY(-2px);
 }
 
+/* Delete Confirmation Dialog */
+.confirm-dialog {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.confirm-dialog-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fafafa;
+}
+
+.confirm-dialog-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.confirm-dialog-content {
+  padding: 1.5rem;
+}
+
+.confirm-dialog-content p {
+  margin: 0 0 1rem 0;
+  font-size: 0.9375rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.confirm-dialog-content p:last-child {
+  margin-bottom: 0;
+}
+
+.confirm-warning {
+  font-size: 0.875rem;
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.confirm-dialog-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  background-color: #fafafa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .week-grid {
@@ -373,6 +492,8 @@ main {
 
   header {
     padding: 1.5rem 1rem;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   header h1 {
@@ -381,5 +502,18 @@ main {
 
   .day-card {
     min-height: 250px;
+  }
+
+  .action-icon {
+    padding: 0.5rem;
+  }
+
+  .action-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .confirm-dialog {
+    max-width: 95%;
   }
 }

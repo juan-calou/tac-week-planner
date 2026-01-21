@@ -1,0 +1,5 @@
+/feature Add option to edit and delete task: /feature
+
+Add an icon (pencil) in the task card to edit the task. It will show the same creation modal, but with edit capabilities.
+
+Add icon (trash can) to delete the task. Show a confirmation message before deleting the task.

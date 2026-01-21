@@ -1,0 +1,84 @@
+[
+  {
+    "type": "queue-operation",
+    "operation": "dequeue",
+    "timestamp": "2026-01-21T14:34:56.305Z",
+    "sessionId": "0048d0e0-f73e-4a48-a0ef-3fc5231c1243"
+  },
+  {
+    "parentUuid": null,
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "0048d0e0-f73e-4a48-a0ef-3fc5231c1243",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": "<command-message>classify_issue</command-message>\n<command-name>/classify_issue</command-name>\n<command-args>{\n  \"number\": 8,\n  \"title\": \"Add option to edit and delete task\",\n  \"body\": \"/feature\\n\\nAdd an icon (pencil) in the task card to edit the task. It will show the same creation modal, but with edit capabilities.\\n\\nAdd icon (trash can) to delete the task. Show a confirmation message before deleting the task.\",\n  \"state\": \"OPEN\",\n  \"author\": {\n    \"id\": \"MDQ6VXNlcjYzNzk5MTg0\",\n    \"login\": \"juan-calou\",\n    \"name\": \"Juan Calou\",\n    \"is_bot\": false\n  },\n  \"assignees\": [],\n  \"labels\": [],\n  \"milestone\": null,\n  \"comments\": [],\n  \"createdAt\": \"2026-01-21T14:28:03Z\",\n  \"updatedAt\": \"2026-01-21T14:28:03Z\",\n  \"closedAt\": null,\n  \"url\": \"https://github.com/juan-calou/tac-week-planner/issues/8\"\n}</command-args>"
+    },
+    "uuid": "e6c57a52-d7a0-4ee0-aa86-803ffee3beea",
+    "timestamp": "2026-01-21T14:34:56.499Z"
+  },
+  {
+    "parentUuid": "e6c57a52-d7a0-4ee0-aa86-803ffee3beea",
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "0048d0e0-f73e-4a48-a0ef-3fc5231c1243",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "# Github Issue Command Selection\n\nBased on the `Github Issue` below, follow the `Instructions` to select the appropriate command to execute based on the `Command Mapping`.\n\n## Instructions\n\n- Based on the details in the `Github Issue`, select the appropriate command to execute.\n- Respond exclusively with '/' followed by the command to execute.\n- Use the command mapping to help you decide which command to respond with.\n- Think hard about the command to execute.\n\n## Command Mapping\n\n- Respond with `/chore` if the issue is a chore.\n- Respond with `/bug` if the issue is a bug.\n- Respond with `/feature` if the issue is a feature.\n- Respond with `0` if the issue isn't any of the above.\n\n## Github Issue\n\n{\n  \"number\": 8,\n  \"title\": \"Add option to edit and delete task\",\n  \"body\": \"/feature\\n\\nAdd an icon (pencil) in the task card to edit the task. It will show the same creation modal, but with edit capabilities.\\n\\nAdd icon (trash can) to delete the task. Show a confirmation message before deleting the task.\",\n  \"state\": \"OPEN\",\n  \"author\": {\n    \"id\": \"MDQ6VXNlcjYzNzk5MTg0\",\n    \"login\": \"juan-calou\",\n    \"name\": \"Juan Calou\",\n    \"is_bot\": false\n  },\n  \"assignees\": [],\n  \"labels\": [],\n  \"milestone\": null,\n  \"comments\": [],\n  \"createdAt\": \"2026-01-21T14:28:03Z\",\n  \"updatedAt\": \"2026-01-21T14:28:03Z\",\n  \"closedAt\": null,\n  \"url\": \"https://github.com/juan-calou/tac-week-planner/issues/8\"\n}"
+        }
+      ]
+    },
+    "isMeta": true,
+    "uuid": "4e3c79f5-e2ae-4317-94e2-77d67939b98a",
+    "timestamp": "2026-01-21T14:34:56.499Z"
+  },
+  {
+    "parentUuid": "4e3c79f5-e2ae-4317-94e2-77d67939b98a",
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "0048d0e0-f73e-4a48-a0ef-3fc5231c1243",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "message": {
+      "model": "claude-sonnet-4-5-20250929",
+      "id": "msg_01QndTxj5tAbvQwwjkstFfE5",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "/feature"
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "usage": {
+        "input_tokens": 3,
+        "cache_creation_input_tokens": 4097,
+        "cache_read_input_tokens": 15193,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4097,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1,
+        "service_tier": "standard"
+      }
+    },
+    "requestId": "req_011CXLgxDkiXKyd7MKjRCs5G",
+    "type": "assistant",
+    "uuid": "164e34e3-4756-45a7-9b63-b3a179a4d4f8",
+    "timestamp": "2026-01-21T14:34:58.645Z"
+  }
+]

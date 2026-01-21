@@ -24,6 +24,18 @@ export class TaskService {
     );
   }
 
+  updateTask(id: number, task: Partial<Omit<Task, 'id' | 'created_at' | 'updated_at'>>): Observable<Task> {
+    return this.http.patch<Task>(`${this.apiUrl}/tasks/${id}`, task).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteTask(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/tasks/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An error occurred';
 
