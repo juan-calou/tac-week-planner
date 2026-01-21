@@ -1,0 +1,230 @@
+[
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/README.md"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/README.md",
+        "content": "# Weekly Planner\n\nA web application that allows for a weekly plan, built with FastAPI and Angular.\n\n## Features\n\n- \ud83d\udde3\ufe0f Week display with tasks\n- \ud83d\udcc1 Add/ edit/ remove tasks\n\n## Prerequisites\n\n- Python 3.10+\n- Node.js 18+\n- OpenAI API key and/or Anthropic API key\n- 'gh' github cli\n- astral uv\n\n## Setup\n\n### 1. Install Dependencies\n\n```bash\n# Backend\ncd app/server\nuv sync --all-extras\n\n# Frontend\ncd app/client\nnpm install\n```\n\n## Quick Start\n\nUse the provided script to start both services:\n\n```bash\n./scripts/start.sh\n```\n\nPress `Ctrl+C` to stop both services.\n\nThe script will:\n\n- Check that `.env` exists in `app/server/`\n- Start the backend on http://localhost:5173\n- Start the frontend on http://localhost:4200\n- Handle graceful shutdown when you exit\n\n## Manual Start (Alternative)\n\n### Backend\n\n```bash\ncd app/server\n# .env is loaded automatically by python-dotenv\nuv run python server.py\n```\n\n### Frontend\n\n```bash\ncd app/client\nnpm run start\n```\n\n## Usage\n\n1. **Add task**: Click \"Add task\" to Add a new task\n2. **Edit task**:\n3. **Delete task**:\n4. **Clear week**:\n\n## Development\n\n### Backend Commands\n\n```bash\ncd app/server\nuv run python server.py      # Start server with hot reload\nuv run pytest               # Run tests\nuv add <package>            # Add package to project\nuv remove <package>         # Remove package from project\nuv sync --all-extras        # Sync all extras\n```\n\n### Frontend Commands\n\n```bash\ncd app/client\nnpm run start              # Start dev server (Angular)\nnpm run build              # Build for production\nnpm run test               # Run tests\n```\n\n## Project Structure\n\n```\n.\n\u251c\u2500\u2500 app/                    # Main application\n\u2502   \u251c\u2500\u2500 client/             # Angular frontend\n\u2502   \u2514\u2500\u2500 server/             # FastAPI backend\n\u2502\n\u251c\u2500\u2500 adws/                   # AI Developer Workflows - Core agent system\n\u251c\u2500\u2500 scripts/                # Utility scripts (start.sh, stop_apps.sh)\n\u251c\u2500\u2500 specs/                  # Feature specifications\n\u251c\u2500\u2500 agents/                 # Agent execution logging\n\u2514\u2500\u2500 logs/                   # Structured session logs\n```\n\n## ADWs\n\n- `uv run adws/health_check.py` - Basic health check ADW\n- `uv run adws/trigger_webhook.py` - React to incoming webhook trigger (be sure to setup a tunnel and your github webhook)\n- `uv run adws/trigger_cron.py` - Simple cron job trigger that checks github issues every N seconds\n- `uv run adws/adw_plan_build.py` - Plan -> Build AI Developer Workflow (ADW)\n\n## API Endpoints\n\n- `POST /api/tasks` - Add a task\n- `PATCH /api/task/:id` - Edit a task\n- `GET /api/tasks` - Get week tasks\n- `GET /api/health` - Health check\n\n## Troubleshooting\n\n**Backend won't start:**\n\n- Check Python version: `python --version` (requires 3.12+)\n- Verify API keys are set: `echo $OPENAI_API_KEY`\n\n**Frontend errors:**\n\n- Clear node_modules: `rm -rf node_modules && npm install`\n- Check Node version: `node --version` (requires 18+)\n\n**CORS issues:**\n\n- Ensure backend is running on port 5173\n- Frontend should be on port 4200\n- Check CORS configuration in server.py\n",
+        "numLines": 141,
+        "startLine": 1,
+        "totalLines": 141
+      }
+    },
+    "tool_use_id": "toolu_011CCNzuBQYEzDBMFo3wNPj4"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "find /Users/muni/code/tac-week-planner/app -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.jsx\" -o -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.html\" 2>/dev/null | head -30",
+      "description": "List app directory structure"
+    },
+    "tool_response": {
+      "stdout": "/Users/muni/code/tac-week-planner/app/server/routers/tasks.py\n/Users/muni/code/tac-week-planner/app/server/routers/health.py\n/Users/muni/code/tac-week-planner/app/server/routers/__init__.py\n/Users/muni/code/tac-week-planner/app/server/server.py\n/Users/muni/code/tac-week-planner/app/server/models.py\n/Users/muni/code/tac-week-planner/app/server/database.py\n/Users/muni/code/tac-week-planner/app/server/tests/conftest.py\n/Users/muni/code/tac-week-planner/app/server/tests/__init__.py\n/Users/muni/code/tac-week-planner/app/server/tests/test_api.py\n/Users/muni/code/tac-week-planner/app/server/.venv/bin/activate_this.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/tags.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_musllinux.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/metadata.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/version.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/licenses/__init__.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/licenses/_spdx.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/__init__.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_parser.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/utils.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/requirements.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_structures.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/markers.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_manylinux.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_tokenizer.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/specifiers.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/packaging/_elffile.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/httpcore/_ssl.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/httpcore/_synchronization.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py\n/Users/muni/code/tac-week-planner/app/server/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_017X2TMh9pkiYw6u1UhjXBwW"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "find /Users/muni/code/tac-week-planner/app/client/src -type f \\( -name \"*.ts\" -o -name \"*.html\" -o -name \"*.css\" \\) | grep -E \"(component|service)\" | head -20",
+      "description": "Find Angular components and services"
+    },
+    "tool_response": {
+      "stdout": "/Users/muni/code/tac-week-planner/app/client/src/app/app.component.html\n/Users/muni/code/tac-week-planner/app/client/src/app/app.component.spec.ts\n/Users/muni/code/tac-week-planner/app/client/src/app/app.component.ts\n/Users/muni/code/tac-week-planner/app/client/src/app/app.component.css\n/Users/muni/code/tac-week-planner/app/client/src/app/services/task.service.ts",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_019byzymoaPyak7i3d2Z9VC2"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/src/app/app.component.html"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/app/client/src/app/app.component.html",
+        "content": "<header>\n  <h1>Week {{ weekNumber }}</h1>\n</header>\n\n<main>\n  <section class=\"week-grid\">\n    @for (day of days; track day.dayName) {\n      <article class=\"day-card\">\n        <div class=\"day-header\">\n          <h2>{{ day.dayName }}</h2>\n        </div>\n        <div class=\"day-date\">\n          <span>{{ day.dateString }}</span>\n        </div>\n        <div class=\"tasks-container\">\n          @if (day.tasks.length === 0) {\n            <p class=\"no-tasks\">No tasks yet</p>\n          }\n        </div>\n      </article>\n    }\n  </section>\n</main>\n",
+        "numLines": 24,
+        "startLine": 1,
+        "totalLines": 24
+      }
+    },
+    "tool_use_id": "toolu_01QkRtciAB1Dng1czdvMRo6m"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/src/app/app.component.ts"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/app/client/src/app/app.component.ts",
+        "content": "import { Component, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DayInfo } from './models/task.model';\n\n@Component({\n  selector: 'app-root',\n  imports: [CommonModule],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.css'\n})\nexport class AppComponent implements OnInit {\n  weekNumber: number = 0;\n  days: DayInfo[] = [];\n\n  ngOnInit(): void {\n    const today = new Date();\n    this.weekNumber = this.getWeekNumber(today);\n\n    const monday = this.getMonday(today);\n    this.days = [];\n\n    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];\n\n    for (let i = 0; i < 7; i++) {\n      const date = new Date(monday);\n      date.setDate(monday.getDate() + i);\n\n      this.days.push({\n        dayName: dayNames[i],\n        date: date,\n        dateString: this.formatDate(date),\n        tasks: []\n      });\n    }\n  }\n\n  getWeekNumber(date: Date): number {\n    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));\n    const dayNum = d.getUTCDay() || 7;\n    d.setUTCDate(d.getUTCDate() + 4 - dayNum);\n    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));\n    const weekNo = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);\n    return weekNo;\n  }\n\n  getMonday(date: Date): Date {\n    const d = new Date(date);\n    const day = d.getDay();\n    const diff = d.getDate() - day + (day === 0 ? -6 : 1);\n    return new Date(d.setDate(diff));\n  }\n\n  formatDate(date: Date): string {\n    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n    return `${months[date.getMonth()]} ${date.getDate()}`;\n  }\n}\n",
+        "numLines": 58,
+        "startLine": 1,
+        "totalLines": 58
+      }
+    },
+    "tool_use_id": "toolu_017XvtGyi84cJ9Aqua8V41rk"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/src/app/models/task.model.ts"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/app/client/src/app/models/task.model.ts",
+        "content": "export interface Task {\n  id: number;\n  title: string;\n  description: string | null;\n  day_of_week: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';\n  time_slot: string;\n  completed: boolean;\n  created_at: string;\n  updated_at: string;\n}\n\nexport interface DayInfo {\n  dayName: string;\n  date: Date;\n  dateString: string;\n  tasks: Task[];\n}\n",
+        "numLines": 18,
+        "startLine": 1,
+        "totalLines": 18
+      }
+    },
+    "tool_use_id": "toolu_01JXtAShKRVL1QyAfTkuCoPV"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "ls -la /Users/muni/code/tac-week-planner/specs/ 2>/dev/null || echo \"specs directory does not exist\"",
+      "description": "Check if specs directory exists"
+    },
+    "tool_response": {
+      "stdout": "total 24\ndrwxr-xr-x@  3 muni  staff    96 Jan 21 10:59 .\ndrwxr-xr-x@ 15 muni  staff   480 Jan 21 10:59 ..\n-rw-r--r--@  1 muni  staff  8383 Jan 21 10:59 chore-1-display-7-days-week.md",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01SjazA6BpAn4ydDJq9eQFNS"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/specs/chore-1-display-7-days-week.md"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/specs/chore-1-display-7-days-week.md",
+        "content": "# Chore: Display 7 Days of the Week\n\n## Chore Description\nUpdate the client main page to display a weekly planner view showing 7 days of the week. Each day should display:\n- The day of the week name (Monday through Sunday)\n- The date for that day\n- A box/container where tasks for that day will be displayed\n\nThe title of the page should show the week number of the year (1-52). This creates the foundation for a weekly task planner interface where users can visualize and manage their tasks across the entire week.\n\n## Relevant Files\nUse these files to resolve the chore:\n\n- `app/client/src/app/app.component.ts` - Main component that will contain the weekly planner logic\n  - Add logic to calculate the current week number (1-52)\n  - Add logic to generate an array of 7 days starting from Monday of the current week\n  - Add logic to format dates and day names\n  - Add data structures to hold day information (day name, date, tasks)\n\n- `app/client/src/app/app.component.html` - Main component template that will display the weekly view\n  - Replace the placeholder Angular template with the weekly planner UI\n  - Display the week number as the title\n  - Use Angular's `@for` control flow to loop through the 7 days\n  - Display each day's name and date\n  - Create task containers for each day\n\n- `app/client/src/app/app.component.css` - Main component styles for the weekly planner\n  - Replace the placeholder styles with custom styles for the weekly planner\n  - Add layout styles for the week grid (7 columns for 7 days)\n  - Add card/box styles for each day container\n  - Add styles for the week number title\n  - Add responsive styles for mobile/tablet views\n  - Add task container placeholder styles\n\n- `app/client/src/app/app.config.ts` - Application configuration\n  - Add HttpClient provider to enable API communication (needed for future task loading)\n\n### New Files\n- `app/client/src/app/services/task.service.ts` - Service to manage task data and API communication\n  - Create an Angular service to handle API calls to the backend\n  - Add methods to fetch tasks from the API\n  - Add data models/interfaces for tasks\n  - This service will be used in future stories to load and manage tasks\n\n- `app/client/src/app/models/task.model.ts` - TypeScript interfaces for task data\n  - Define the Task interface matching the backend model\n  - Include properties: id, title, description, day_of_week, time_slot, completed, created_at, updated_at\n  - This ensures type safety across the application\n\n## Step by Step Tasks\nIMPORTANT: Execute every step in order, top to bottom.\n\n### 1. Create TypeScript Models\n- Create `app/client/src/app/models/task.model.ts` file\n- Define the `Task` interface with properties matching the backend API model:\n  - id: number\n  - title: string\n  - description: string | null\n  - day_of_week: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'\n  - time_slot: string\n  - completed: boolean\n  - created_at: string\n  - updated_at: string\n- Define a `DayInfo` interface to represent each day in the week view:\n  - dayName: string (e.g., \"Monday\")\n  - date: Date\n  - dateString: string (formatted date like \"Jan 20\")\n  - tasks: Task[] (array of tasks for that day, initially empty)\n\n### 2. Create Task Service\n- Create `app/client/src/app/services/task.service.ts` file\n- Implement an Angular service with `@Injectable({ providedIn: 'root' })`\n- Inject HttpClient for API communication\n- Define the API base URL (http://localhost:5173/api)\n- Create a `getTasks()` method that returns an Observable<Task[]>\n- Add proper error handling for API calls\n- This service provides a foundation for future task management features\n\n### 3. Update App Configuration\n- Update `app/client/src/app/app.config.ts`\n- Import `provideHttpClient` from '@angular/common/http'\n- Add `provideHttpClient()` to the providers array\n- This enables HTTP communication for the task service\n\n### 4. Update App Component TypeScript\n- Update `app/client/src/app/app.component.ts`\n- Import necessary Angular modules (CommonModule for date formatting)\n- Import the Task and DayInfo models\n- Add a property `weekNumber: number` to store the current week number (1-52)\n- Add a property `days: DayInfo[]` to store the 7 days of the week\n- Implement `ngOnInit()` lifecycle hook:\n  - Calculate the current week number using ISO 8601 week date standard\n  - Get the current date\n  - Find the Monday of the current week (start of week)\n  - Generate an array of 7 DayInfo objects (Monday through Sunday)\n  - For each day, calculate the date and format it appropriately\n- Add helper method `getWeekNumber(date: Date): number` to calculate ISO week number\n- Add helper method `getMonday(date: Date): Date` to get the Monday of a given date's week\n- Add helper method `formatDate(date: Date): string` to format dates as \"MMM DD\" (e.g., \"Jan 20\")\n\n### 5. Update App Component HTML\n- Update `app/client/src/app/app.component.html`\n- Remove all placeholder Angular content (the entire template from lines 1-336)\n- Create a new structure with:\n  - Header section displaying \"Week {{ weekNumber }}\" as the main title\n  - Main content section with a grid layout for the 7 days\n  - Use `@for` directive to loop through the days array: `@for (day of days; track day.dayName)`\n  - For each day, create a card/box containing:\n    - Day name header (e.g., \"Monday\")\n    - Date display (e.g., \"Jan 20\")\n    - Tasks container (empty placeholder with a message like \"No tasks yet\")\n- Add semantic HTML structure (header, main, section, article elements)\n\n### 6. Update App Component CSS\n- Update `app/client/src/app/app.component.css`\n- Remove all placeholder Angular styles (the entire :host style block from lines 11-177)\n- Create new styles for the weekly planner:\n  - Container styles with proper padding and max-width for readability\n  - Header styles for the week number title (centered, large font, proper spacing)\n  - Grid layout for the 7 days (use CSS Grid with 7 columns on desktop)\n  - Day card styles with borders, padding, shadows, and hover effects\n  - Day name header styles (bold, centered, background color)\n  - Date display styles (smaller font, gray color, centered)\n  - Task container placeholder styles (min-height, border, padding)\n  - Responsive styles using media queries:\n    - Tablet: 3-4 columns\n    - Mobile: 1-2 columns (stacked layout)\n  - Color scheme that is clean and professional (neutral colors with subtle accents)\n\n### 7. Run Validation Commands\n- Execute all validation commands listed below to ensure the chore is complete with zero regressions\n- Verify the application starts without errors\n- Check the browser at http://localhost:4200 to visually confirm the weekly view displays correctly\n- Verify server tests pass to ensure no backend regressions\n\n## Validation Commands\nExecute every command to validate the chore is complete with zero regressions.\n\n- `cd app/client && npm run build` - Build the Angular client to validate TypeScript compilation and catch any errors\n- `cd app/server && uv run pytest` - Run server tests to validate the chore is complete with zero regressions\n- `./scripts/start.sh` - Start both client and server to manually verify the weekly view displays correctly at http://localhost:4200\n\n## Notes\n- This chore focuses solely on the UI structure and week calculation logic. Task management functionality (add, edit, delete) will be implemented in future stories.\n- The week number calculation should use the ISO 8601 standard where weeks start on Monday and the first week of the year is the week containing the first Thursday.\n- The dates displayed should be dynamic based on the current date, showing the current week's Monday through Sunday.\n- The task containers are placeholders for now. They will be populated with actual tasks in future iterations when task loading and management features are implemented.\n- The Angular application uses standalone components (Angular 19+), so imports should be included directly in the component decorator.\n- The backend API already exists and supports task management, but this chore does not integrate with it yet. The task service is created as a foundation for future integration.\n- Consider accessibility: use semantic HTML, proper heading hierarchy, and ARIA labels where appropriate.\n- The styling should be responsive and work well on desktop, tablet, and mobile devices.\n",
+        "numLines": 152,
+        "startLine": 1,
+        "totalLines": 152
+      }
+    },
+    "tool_use_id": "toolu_01LPtyJENqfVsBXAXczK3jjC"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/package.json"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/muni/code/tac-week-planner/app/client/package.json",
+        "content": "{\n  \"name\": \"tac-week-planner\",\n  \"version\": \"0.0.0\",\n  \"scripts\": {\n    \"ng\": \"ng\",\n    \"start\": \"ng serve\",\n    \"build\": \"ng build\",\n    \"watch\": \"ng build --watch --configuration development\",\n    \"test\": \"ng test\"\n  },\n  \"private\": true,\n  \"dependencies\": {\n    \"@angular/common\": \"^19.2.0\",\n    \"@angular/compiler\": \"^19.2.0\",\n    \"@angular/core\": \"^19.2.0\",\n    \"@angular/forms\": \"^19.2.0\",\n    \"@angular/platform-browser\": \"^19.2.0\",\n    \"@angular/platform-browser-dynamic\": \"^19.2.0\",\n    \"@angular/router\": \"^19.2.0\",\n    \"rxjs\": \"~7.8.0\",\n    \"tslib\": \"^2.3.0\",\n    \"zone.js\": \"~0.15.0\"\n  },\n  \"devDependencies\": {\n    \"@angular-devkit/build-angular\": \"^19.2.19\",\n    \"@angular/cli\": \"^19.2.19\",\n    \"@angular/compiler-cli\": \"^19.2.0\",\n    \"@types/jasmine\": \"~5.1.0\",\n    \"jasmine-core\": \"~5.6.0\",\n    \"karma\": \"~6.4.0\",\n    \"karma-chrome-launcher\": \"~3.2.0\",\n    \"karma-coverage\": \"~2.2.0\",\n    \"karma-jasmine\": \"~5.1.0\",\n    \"karma-jasmine-html-reporter\": \"~2.1.0\",\n    \"typescript\": \"~5.7.2\"\n  }\n}\n",
+        "numLines": 38,
+        "startLine": 1,
+        "totalLines": 38
+      }
+    },
+    "tool_use_id": "toolu_019NN5iC1yyeXQwMTeiYjUsq"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "ls -la /Users/muni/code/tac-week-planner/app/client/ | grep -E \"(test|spec|karma|jest)\"",
+      "description": "Check for test configuration"
+    },
+    "tool_response": {
+      "stdout": "-rw-r--r--@   1 muni  staff     434 Jan 21 09:42 tsconfig.spec.json",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01798vfDhFxFrGeuHP8LtSvk"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/specs/chore-3-add-dates-to-title.md",
+      "content": "# Chore: Add Dates to Title\n\n## Chore Description\nUpdate the main page title to include the date range for the current week. The title currently displays only \"Week ##\" but should now display \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\" where the dates represent the Monday (start) and Sunday (end) of the current week using the MM/DD/YYYY date format.\n\nThis enhancement provides users with immediate context about the exact date range they are viewing, making the weekly planner more informative and easier to use when planning tasks.\n\n## Relevant Files\nUse these files to resolve the chore:\n\n- `app/client/src/app/app.component.ts` - Main component TypeScript file\n  - Add a new property to store the formatted date range string\n  - Create a helper method to format dates in MM/DD/YYYY format\n  - Update the ngOnInit() method to calculate and store the week's start date (Monday) and end date (Sunday)\n  - Generate the complete title string with the date range\n\n- `app/client/src/app/app.component.html` - Main component template file\n  - Update the header section to display the new title format with dates\n  - Replace `<h1>Week {{ weekNumber }}</h1>` with `<h1>{{ weekTitle }}</h1>` to show the complete title including date range\n\n## Step by Step Tasks\nIMPORTANT: Execute every step in order, top to bottom.\n\n### 1. Update App Component TypeScript\n- Open `app/client/src/app/app.component.ts`\n- Add a new property `weekTitle: string = '';` to store the complete title with date range\n- Create a new helper method `formatDateMMDDYYYY(date: Date): string` that:\n  - Takes a Date object as input\n  - Returns a string in MM/DD/YYYY format\n  - Uses zero-padding for single-digit months and days (e.g., \"01/05/2026\" not \"1/5/2026\")\n- Update the `ngOnInit()` method to:\n  - Calculate the Monday of the current week (already done with getMonday method)\n  - Calculate the Sunday of the current week by adding 6 days to Monday\n  - Format both Monday and Sunday dates using the new formatDateMMDDYYYY method\n  - Build the complete title string: `Week ${weekNumber} (${mondayFormatted} to ${sundayFormatted})`\n  - Assign this string to the weekTitle property\n\n### 2. Update App Component HTML\n- Open `app/client/src/app/app.component.html`\n- Locate the header section containing `<h1>Week {{ weekNumber }}</h1>`\n- Replace `{{ weekNumber }}` with `{{ weekTitle }}` so the line reads: `<h1>{{ weekTitle }}</h1>`\n- This change will display the complete title with date range instead of just the week number\n\n### 3. Run Validation Commands\n- Execute all validation commands listed below to ensure the chore is complete with zero regressions\n- Verify the application compiles without TypeScript errors\n- Verify server tests pass to ensure no backend regressions\n- Start the application and manually verify the title displays in the correct format: \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Validation Commands\nExecute every command to validate the chore is complete with zero regressions.\n\n- `cd app/client && npm run build` - Build the Angular client to validate TypeScript compilation and catch any errors\n- `cd app/server && uv run pytest` - Run server tests to validate the chore is complete with zero regressions\n- `./scripts/start.sh` - Start both client and server to manually verify the title displays correctly at http://localhost:4200 with the format \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Notes\n- The MM/DD/YYYY format requires zero-padding (e.g., \"01/05/2026\" not \"1/5/2026\")\n- The week always starts on Monday and ends on Sunday, consistent with the existing week calculation logic\n- The existing weekNumber property is still used to calculate the week number, but the display now uses the weekTitle property\n- This is a display-only change and does not affect any backend functionality or data models\n- The date range will automatically update based on the current date when the component initializes\n"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/muni/code/tac-week-planner/specs/chore-3-add-dates-to-title.md",
+      "content": "# Chore: Add Dates to Title\n\n## Chore Description\nUpdate the main page title to include the date range for the current week. The title currently displays only \"Week ##\" but should now display \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\" where the dates represent the Monday (start) and Sunday (end) of the current week using the MM/DD/YYYY date format.\n\nThis enhancement provides users with immediate context about the exact date range they are viewing, making the weekly planner more informative and easier to use when planning tasks.\n\n## Relevant Files\nUse these files to resolve the chore:\n\n- `app/client/src/app/app.component.ts` - Main component TypeScript file\n  - Add a new property to store the formatted date range string\n  - Create a helper method to format dates in MM/DD/YYYY format\n  - Update the ngOnInit() method to calculate and store the week's start date (Monday) and end date (Sunday)\n  - Generate the complete title string with the date range\n\n- `app/client/src/app/app.component.html` - Main component template file\n  - Update the header section to display the new title format with dates\n  - Replace `<h1>Week {{ weekNumber }}</h1>` with `<h1>{{ weekTitle }}</h1>` to show the complete title including date range\n\n## Step by Step Tasks\nIMPORTANT: Execute every step in order, top to bottom.\n\n### 1. Update App Component TypeScript\n- Open `app/client/src/app/app.component.ts`\n- Add a new property `weekTitle: string = '';` to store the complete title with date range\n- Create a new helper method `formatDateMMDDYYYY(date: Date): string` that:\n  - Takes a Date object as input\n  - Returns a string in MM/DD/YYYY format\n  - Uses zero-padding for single-digit months and days (e.g., \"01/05/2026\" not \"1/5/2026\")\n- Update the `ngOnInit()` method to:\n  - Calculate the Monday of the current week (already done with getMonday method)\n  - Calculate the Sunday of the current week by adding 6 days to Monday\n  - Format both Monday and Sunday dates using the new formatDateMMDDYYYY method\n  - Build the complete title string: `Week ${weekNumber} (${mondayFormatted} to ${sundayFormatted})`\n  - Assign this string to the weekTitle property\n\n### 2. Update App Component HTML\n- Open `app/client/src/app/app.component.html`\n- Locate the header section containing `<h1>Week {{ weekNumber }}</h1>`\n- Replace `{{ weekNumber }}` with `{{ weekTitle }}` so the line reads: `<h1>{{ weekTitle }}</h1>`\n- This change will display the complete title with date range instead of just the week number\n\n### 3. Run Validation Commands\n- Execute all validation commands listed below to ensure the chore is complete with zero regressions\n- Verify the application compiles without TypeScript errors\n- Verify server tests pass to ensure no backend regressions\n- Start the application and manually verify the title displays in the correct format: \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Validation Commands\nExecute every command to validate the chore is complete with zero regressions.\n\n- `cd app/client && npm run build` - Build the Angular client to validate TypeScript compilation and catch any errors\n- `cd app/server && uv run pytest` - Run server tests to validate the chore is complete with zero regressions\n- `./scripts/start.sh` - Start both client and server to manually verify the title displays correctly at http://localhost:4200 with the format \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Notes\n- The MM/DD/YYYY format requires zero-padding (e.g., \"01/05/2026\" not \"1/5/2026\")\n- The week always starts on Monday and ends on Sunday, consistent with the existing week calculation logic\n- The existing weekNumber property is still used to calculate the week number, but the display now uses the weekTitle property\n- This is a display-only change and does not affect any backend functionality or data models\n- The date range will automatically update based on the current date when the component initializes\n",
+      "structuredPatch": [],
+      "originalFile": null
+    },
+    "tool_use_id": "toolu_01WBAn7h6Xwxkc4vVZwkTtnQ"
+  }
+]

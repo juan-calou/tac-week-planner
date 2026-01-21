@@ -10,6 +10,7 @@ import { DayInfo } from './models/task.model';
 })
 export class AppComponent implements OnInit {
   weekNumber: number = 0;
+  weekTitle: string = '';
   days: DayInfo[] = [];
 
   ngOnInit(): void {
@@ -17,6 +18,13 @@ export class AppComponent implements OnInit {
     this.weekNumber = this.getWeekNumber(today);
 
     const monday = this.getMonday(today);
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const mondayFormatted = this.formatDateMMDDYYYY(monday);
+    const sundayFormatted = this.formatDateMMDDYYYY(sunday);
+    this.weekTitle = `Week ${this.weekNumber} (${mondayFormatted} to ${sundayFormatted})`;
+
     this.days = [];
 
     const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -53,5 +61,12 @@ export class AppComponent implements OnInit {
   formatDate(date: Date): string {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${months[date.getMonth()]} ${date.getDate()}`;
+  }
+
+  formatDateMMDDYYYY(date: Date): string {
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
   }
 }
