@@ -1,0 +1,28 @@
+[
+  {
+    "session_id": "a98ade0d-18dd-497e-b27f-d8cc5fd06736",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a98ade0d-18dd-497e-b27f-d8cc5fd06736.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check changes made"
+    },
+    "tool_use_id": "toolu_01L31A6KSU1dG9uNbtpcCuKr"
+  },
+  {
+    "session_id": "a98ade0d-18dd-497e-b27f-d8cc5fd06736",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/a98ade0d-18dd-497e-b27f-d8cc5fd06736.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"sdlc_implementor: bug: fix task date and modal spacing\"",
+      "description": "Stage and commit implementation changes"
+    },
+    "tool_use_id": "toolu_01PmDQYZnYdpKBomMi3iUjU9"
+  }
+]
