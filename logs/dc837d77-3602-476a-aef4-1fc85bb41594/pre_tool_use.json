@@ -1,0 +1,28 @@
+[
+  {
+    "session_id": "dc837d77-3602-476a-aef4-1fc85bb41594",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/dc837d77-3602-476a-aef4-1fc85bb41594.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check staged and unstaged changes"
+    },
+    "tool_use_id": "toolu_01TRYwLq1vK2ehNPE7hv8QbU"
+  },
+  {
+    "session_id": "dc837d77-3602-476a-aef4-1fc85bb41594",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/dc837d77-3602-476a-aef4-1fc85bb41594.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"sdlc_planner: chore: display 7 days of week\"",
+      "description": "Stage all changes and create commit"
+    },
+    "tool_use_id": "toolu_01ByVuzskvMUCk4SN75TwFX9"
+  }
+]

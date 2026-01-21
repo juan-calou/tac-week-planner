@@ -1,0 +1,28 @@
+[
+  {
+    "session_id": "89ab2036-cc5c-4703-8889-4a6ade6800a1",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/89ab2036-cc5c-4703-8889-4a6ade6800a1.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check changes to understand commit content"
+    },
+    "tool_use_id": "toolu_0119q2HNcCxxpDQoknZzpvQV"
+  },
+  {
+    "session_id": "89ab2036-cc5c-4703-8889-4a6ade6800a1",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/89ab2036-cc5c-4703-8889-4a6ade6800a1.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A",
+      "description": "Stage all changes for commit"
+    },
+    "tool_use_id": "toolu_01JKK1XYVxoyQuSjiY9t2mXb"
+  }
+]
