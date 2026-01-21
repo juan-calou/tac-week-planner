@@ -1,0 +1,40 @@
+[
+  {
+    "session_id": "13fbe5e3-1c80-448d-b66d-2806c2591f0c",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/13fbe5e3-1c80-448d-b66d-2806c2591f0c.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Show changes made since last commit"
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01TKMPBoExJWPFJ7cdNNtts4"
+  },
+  {
+    "session_id": "13fbe5e3-1c80-448d-b66d-2806c2591f0c",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/13fbe5e3-1c80-448d-b66d-2806c2591f0c.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git status",
+      "description": "Check git status for untracked files"
+    },
+    "tool_response": {
+      "stdout": "On branch bug-7-7b0f8cf5-fix-add-task-bugs\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\tagents/7b0f8cf5/\n\tlogs/007db5fd-9ebb-4d4f-ba1a-11f4448e62c9/\n\tlogs/13fbe5e3-1c80-448d-b66d-2806c2591f0c/\n\tlogs/296d25d8-99cf-4761-b5f0-0cf634feb8d7/\n\tlogs/86f39701-3038-441c-8cca-6768bb6506b0/\n\tlogs/a9b2d549-632b-4a41-82d3-ddee0b798de8/\n\tspecs/bug-7-fix-add-task-bugs.md\n\nnothing added to commit but untracked files present (use \"git add\" to track)",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    },
+    "tool_use_id": "toolu_01973VuZHu7R6XxxBoimEdgm"
+  }
+]
