@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DayInfo } from './models/task.model';
+import { DayInfo, Task } from './models/task.model';
 import { TaskService } from './services/task.service';
 
 @Component({
@@ -15,11 +15,20 @@ export class AppComponent implements OnInit {
   weekTitle: string = '';
   days: DayInfo[] = [];
   isModalOpen: boolean = false;
-  newTask = {
+  isEditMode: boolean = false;
+  editingTaskId: number | null = null;
+  isDeleteConfirmOpen: boolean = false;
+  taskToDelete: Task | null = null;
+  newTask: {
+    date: Date;
+    title: string;
+    description: string;
+    task_type: 'personal' | 'work' | 'other';
+  } = {
     date: new Date(),
     title: '',
     description: '',
-    task_type: 'personal' as const
+    task_type: 'personal'
   };
   formErrors: string[] = [];
 
@@ -86,6 +95,8 @@ export class AppComponent implements OnInit {
 
   openModal(): void {
     this.isModalOpen = true;
+    this.isEditMode = false;
+    this.editingTaskId = null;
     this.newTask = {
       date: new Date(),
       title: '',
@@ -95,8 +106,31 @@ export class AppComponent implements OnInit {
     this.formErrors = [];
   }
 
+  openEditModal(task: Task): void {
+    this.isModalOpen = true;
+    this.isEditMode = true;
+    this.editingTaskId = task.id;
+
+    // Convert day_of_week back to a date within the current week
+    const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+      .indexOf(task.day_of_week);
+    const monday = this.getMonday(new Date());
+    const taskDate = new Date(monday);
+    taskDate.setDate(monday.getDate() + dayIndex);
+
+    this.newTask = {
+      date: taskDate,
+      title: task.title,
+      description: task.description || '',
+      task_type: task.task_type
+    };
+    this.formErrors = [];
+  }
+
   closeModal(): void {
     this.isModalOpen = false;
+    this.isEditMode = false;
+    this.editingTaskId = null;
     this.formErrors = [];
   }
 
@@ -134,15 +168,29 @@ export class AppComponent implements OnInit {
       completed: false
     };
 
-    this.taskService.createTask(taskData).subscribe({
-      next: () => {
-        this.closeModal();
-        this.loadTasks();
-      },
-      error: (error) => {
-        this.formErrors = ['Failed to create task: ' + error.message];
-      }
-    });
+    if (this.isEditMode && this.editingTaskId !== null) {
+      // Update existing task
+      this.taskService.updateTask(this.editingTaskId, taskData).subscribe({
+        next: () => {
+          this.closeModal();
+          this.loadTasks();
+        },
+        error: (error) => {
+          this.formErrors = ['Failed to update task: ' + error.message];
+        }
+      });
+    } else {
+      // Create new task
+      this.taskService.createTask(taskData).subscribe({
+        next: () => {
+          this.closeModal();
+          this.loadTasks();
+        },
+        error: (error) => {
+          this.formErrors = ['Failed to create task: ' + error.message];
+        }
+      });
+    }
   }
 
   getDayOfWeekFromDate(date: Date): 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday' {
@@ -162,5 +210,30 @@ export class AppComponent implements OnInit {
         console.error('Failed to load tasks:', error);
       }
     });
+  }
+
+  openDeleteConfirmation(task: Task): void {
+    this.isDeleteConfirmOpen = true;
+    this.taskToDelete = task;
+  }
+
+  closeDeleteConfirmation(): void {
+    this.isDeleteConfirmOpen = false;
+    this.taskToDelete = null;
+  }
+
+  confirmDeleteTask(): void {
+    if (this.taskToDelete) {
+      this.taskService.deleteTask(this.taskToDelete.id).subscribe({
+        next: () => {
+          this.closeDeleteConfirmation();
+          this.loadTasks();
+        },
+        error: (error) => {
+          console.error('Failed to delete task:', error);
+          this.closeDeleteConfirmation();
+        }
+      });
+    }
   }
 }
