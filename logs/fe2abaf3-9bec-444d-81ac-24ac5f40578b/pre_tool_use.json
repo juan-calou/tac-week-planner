@@ -1,0 +1,28 @@
+[
+  {
+    "session_id": "fe2abaf3-9bec-444d-81ac-24ac5f40578b",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/fe2abaf3-9bec-444d-81ac-24ac5f40578b.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check what changes have been made"
+    },
+    "tool_use_id": "toolu_01VGgVqBSRJCJjhpjeidDhPc"
+  },
+  {
+    "session_id": "fe2abaf3-9bec-444d-81ac-24ac5f40578b",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/fe2abaf3-9bec-444d-81ac-24ac5f40578b.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add -A && git commit -m \"sdlc_implementor: chore: add dates to week title\"",
+      "description": "Stage all changes and create commit"
+    },
+    "tool_use_id": "toolu_01QHKnAcjcUrKzjGJXJuofnh"
+  }
+]
