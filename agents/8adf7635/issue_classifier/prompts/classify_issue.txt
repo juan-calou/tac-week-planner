@@ -1,0 +1,20 @@
+/classify_issue {
+  "number": 8,
+  "title": "Add option to edit and delete task",
+  "body": "/feature\n\nAdd an icon (pencil) in the task card to edit the task. It will show the same creation modal, but with edit capabilities.\n\nAdd icon (trash can) to delete the task. Show a confirmation message before deleting the task.",
+  "state": "OPEN",
+  "author": {
+    "id": "MDQ6VXNlcjYzNzk5MTg0",
+    "login": "juan-calou",
+    "name": "Juan Calou",
+    "is_bot": false
+  },
+  "assignees": [],
+  "labels": [],
+  "milestone": null,
+  "comments": [],
+  "createdAt": "2026-01-21T14:28:03Z",
+  "updatedAt": "2026-01-21T14:28:03Z",
+  "closedAt": null,
+  "url": "https://github.com/juan-calou/tac-week-planner/issues/8"
+}

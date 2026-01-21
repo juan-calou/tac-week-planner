@@ -1,0 +1,43 @@
+/find_plan_file Perfect! I've created a comprehensive plan for adding edit and delete functionality to tasks. Let me now provide a summary of the work completed.
+
+## Summary
+
+I've successfully created a comprehensive feature specification for adding edit and delete functionality to the task management system. Here's what was accomplished:
+
+**Plan Created:**
+- **File**: `/Users/muni/code/tac-week-planner/specs/feature-8-edit-delete-task.md`
+
+**Key Highlights:**
+
+- **Feature Scope**: Transform the weekly planner from a create-only system into a full CRUD application by adding:
+  - Pencil icon on each task card to edit tasks (opens modal in edit mode)
+  - Trash can icon on each task card to delete tasks (shows confirmation dialog)
+
+- **Architecture Approach**:
+  - Leverages existing backend endpoints (PATCH and DELETE already implemented)
+  - Reuses the existing "Add New Task" modal for editing (with mode detection)
+  - Adds confirmation dialog for deletion to prevent accidental removals
+  - Only requires frontend changes (no backend modifications needed)
+
+- **Implementation Plan**: Structured in 3 phases
+  - Phase 1: Service layer updates (add updateTask/deleteTask methods)
+  - Phase 2: Edit functionality (modal reuse, state management, form pre-population)
+  - Phase 3: Delete functionality (confirmation dialog, action icons, styling)
+
+- **Step-by-Step Tasks**: 20 detailed steps covering:
+  - Service method additions
+  - Component state management (edit mode, delete confirmation)
+  - Template updates (action icons, modal title changes, confirmation dialog)
+  - CSS styling (icons, hover effects, confirmation dialog, responsive design)
+  - Comprehensive end-to-end testing
+
+- **Files Involved**:
+  - `app/client/src/app/services/task.service.ts` - Add update/delete service methods
+  - `app/client/src/app/app.component.ts` - Edit/delete logic and state management
+  - `app/client/src/app/app.component.html` - Action icons and confirmation dialog UI
+  - `app/client/src/app/app.component.css` - Styling for icons and dialogs
+  - Backend files require no changes (endpoints already exist)
+
+- **Testing Strategy**: Comprehensive coverage including unit tests, integration tests, and edge cases like moving tasks between days, deleting the last task, and rapid clicking scenarios
+
+The plan follows the exact format specified, includes all necessary implementation details, and provides clear validation commands to ensure zero regressions.
