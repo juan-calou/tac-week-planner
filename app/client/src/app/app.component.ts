@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { DayInfo } from './models/task.model';
+import { TaskService } from './services/task.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -12,6 +14,16 @@ export class AppComponent implements OnInit {
   weekNumber: number = 0;
   weekTitle: string = '';
   days: DayInfo[] = [];
+  isModalOpen: boolean = false;
+  newTask = {
+    date: new Date(),
+    title: '',
+    description: '',
+    task_type: 'personal' as const
+  };
+  formErrors: string[] = [];
+
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
     const today = new Date();
@@ -40,6 +52,8 @@ export class AppComponent implements OnInit {
         tasks: []
       });
     }
+
+    this.loadTasks();
   }
 
   getWeekNumber(date: Date): number {
@@ -68,5 +82,85 @@ export class AppComponent implements OnInit {
     const day = date.getDate().toString().padStart(2, '0');
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
+  }
+
+  openModal(): void {
+    this.isModalOpen = true;
+    this.newTask = {
+      date: new Date(),
+      title: '',
+      description: '',
+      task_type: 'personal'
+    };
+    this.formErrors = [];
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.formErrors = [];
+  }
+
+  validateForm(): boolean {
+    this.formErrors = [];
+
+    if (!this.newTask.title || this.newTask.title.trim().length === 0) {
+      this.formErrors.push('Title is required');
+    }
+
+    if (!this.newTask.date) {
+      this.formErrors.push('Date is required');
+    }
+
+    if (!this.newTask.task_type) {
+      this.formErrors.push('Task type is required');
+    }
+
+    return this.formErrors.length === 0;
+  }
+
+  onSubmit(): void {
+    if (!this.validateForm()) {
+      return;
+    }
+
+    const dayOfWeek = this.getDayOfWeekFromDate(this.newTask.date);
+
+    const taskData = {
+      title: this.newTask.title,
+      description: this.newTask.description || null,
+      day_of_week: dayOfWeek,
+      time_slot: '12:00 PM',
+      task_type: this.newTask.task_type,
+      completed: false
+    };
+
+    this.taskService.createTask(taskData).subscribe({
+      next: () => {
+        this.closeModal();
+        this.loadTasks();
+      },
+      error: (error) => {
+        this.formErrors = ['Failed to create task: ' + error.message];
+      }
+    });
+  }
+
+  getDayOfWeekFromDate(date: Date): 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday' {
+    const dayNames: ('Sunday' | 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday')[] =
+      ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return dayNames[new Date(date).getDay()] as 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
+  }
+
+  loadTasks(): void {
+    this.taskService.getTasks().subscribe({
+      next: (tasks) => {
+        this.days.forEach(day => {
+          day.tasks = tasks.filter(task => task.day_of_week === day.dayName);
+        });
+      },
+      error: (error) => {
+        console.error('Failed to load tasks:', error);
+      }
+    });
   }
 }

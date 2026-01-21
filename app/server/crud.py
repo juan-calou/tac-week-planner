@@ -10,13 +10,14 @@ def create_task(conn: Connection, task_data: TaskCreate) -> int:
     cursor = conn.cursor()
     now = datetime.now().isoformat()
     cursor.execute("""
-        INSERT INTO tasks (title, description, day_of_week, time_slot, completed, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO tasks (title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         task_data.title,
         task_data.description,
         task_data.day_of_week,
         task_data.time_slot,
+        task_data.task_type,
         int(task_data.completed),
         now,
         now
@@ -29,7 +30,7 @@ def get_all_tasks(conn: Connection) -> List[Dict[str, Any]]:
     """Retrieve all tasks from the database."""
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT id, title, description, day_of_week, time_slot, completed, created_at, updated_at
+        SELECT id, title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at
         FROM tasks
         ORDER BY
             CASE day_of_week
@@ -59,7 +60,7 @@ def get_task_by_id(conn: Connection, task_id: int) -> Optional[Dict[str, Any]]:
     """Get a single task by ID."""
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT id, title, description, day_of_week, time_slot, completed, created_at, updated_at
+        SELECT id, title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at
         FROM tasks
         WHERE id = ?
     """, (task_id,))
@@ -102,6 +103,10 @@ def update_task(conn: Connection, task_id: int, task_data: TaskUpdate) -> bool:
     if task_data.completed is not None:
         update_fields.append("completed = ?")
         values.append(int(task_data.completed))
+
+    if task_data.task_type is not None:
+        update_fields.append("task_type = ?")
+        values.append(task_data.task_type)
 
     # Always update updated_at
     update_fields.append("updated_at = ?")

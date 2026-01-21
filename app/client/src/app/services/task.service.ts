@@ -18,6 +18,12 @@ export class TaskService {
     );
   }
 
+  createTask(task: Omit<Task, 'id' | 'created_at' | 'updated_at'>): Observable<Task> {
+    return this.http.post<Task>(`${this.apiUrl}/tasks`, task).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An error occurred';
 

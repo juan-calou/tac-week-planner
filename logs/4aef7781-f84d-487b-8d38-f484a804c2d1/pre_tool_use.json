@@ -1,0 +1,41 @@
+[
+  {
+    "session_id": "4aef7781-f84d-487b-8d38-f484a804c2d1",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4aef7781-f84d-487b-8d38-f484a804c2d1.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git diff HEAD",
+      "description": "Check what changes have been made"
+    },
+    "tool_use_id": "toolu_01KdcVe1LjVBQNggKPrSf18Z"
+  },
+  {
+    "session_id": "4aef7781-f84d-487b-8d38-f484a804c2d1",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4aef7781-f84d-487b-8d38-f484a804c2d1.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git status",
+      "description": "Check staged and untracked changes"
+    },
+    "tool_use_id": "toolu_01UBMFcpncWakWms1JvjPzit"
+  },
+  {
+    "session_id": "4aef7781-f84d-487b-8d38-f484a804c2d1",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/4aef7781-f84d-487b-8d38-f484a804c2d1.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add specs/feature-5-add-new-task.md && git commit -m \"$(cat <<'EOF'\nsdlc_planner: feature: add new task spec\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\"",
+      "description": "Stage spec file and create commit"
+    },
+    "tool_use_id": "toolu_01K2v4SpKqeHnK9TdcAMPUcC"
+  }
+]

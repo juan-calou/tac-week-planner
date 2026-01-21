@@ -1,0 +1,3 @@
+/feature Add new task: /feature
+
+Add a button to "Add new task". A task can have a date, a title, a description and a type (personal, work, other). All mandatory. When a user clicks this button we will show a modal with a form to fill in this information. After submission we will use the server enpoint to add the task. We also need to read the week tasks, and if there is a task in the week, we will show it as a card in the date box.

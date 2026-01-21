@@ -8,6 +8,7 @@ class TaskBase(BaseModel):
     description: Optional[str] = None
     day_of_week: str = Field(..., pattern="^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$")
     time_slot: str = Field(..., min_length=1, max_length=50)
+    task_type: str = Field(..., pattern="^(personal|work|other)$")
     completed: bool = False
 
 
@@ -20,6 +21,7 @@ class TaskUpdate(BaseModel):
     description: Optional[str] = None
     day_of_week: Optional[str] = Field(None, pattern="^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$")
     time_slot: Optional[str] = Field(None, min_length=1, max_length=50)
+    task_type: Optional[str] = Field(None, pattern="^(personal|work|other)$")
     completed: Optional[bool] = None
 
 
