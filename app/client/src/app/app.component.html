@@ -1,5 +1,6 @@
 <header>
   <h1>{{ weekTitle }}</h1>
+  <button class="add-task-btn" (click)="openModal()">+ Add New Task</button>
 </header>
 
 <main>
@@ -15,9 +16,87 @@
         <div class="tasks-container">
           @if (day.tasks.length === 0) {
             <p class="no-tasks">No tasks yet</p>
+          } @else {
+            @for (task of day.tasks; track task.id) {
+              <div class="task-card" [ngClass]="'task-type-' + task.task_type">
+                <h3 class="task-title">{{ task.title }}</h3>
+                @if (task.description) {
+                  <p class="task-description">{{ task.description }}</p>
+                }
+                <span class="task-type-badge">{{ task.task_type }}</span>
+              </div>
+            }
           }
         </div>
       </article>
     }
   </section>
+
+  @if (isModalOpen) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal-dialog" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>Add New Task</h2>
+          <button class="close-btn" (click)="closeModal()">&times;</button>
+        </div>
+        <form class="modal-form" (ngSubmit)="onSubmit()">
+          @if (formErrors.length > 0) {
+            <div class="form-errors">
+              @for (error of formErrors; track error) {
+                <p class="form-error">{{ error }}</p>
+              }
+            </div>
+          }
+          <div class="form-group">
+            <label for="task-date">Date</label>
+            <input
+              type="date"
+              id="task-date"
+              [(ngModel)]="newTask.date"
+              name="date"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="task-title">Title</label>
+            <input
+              type="text"
+              id="task-title"
+              [(ngModel)]="newTask.title"
+              name="title"
+              placeholder="Enter task title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <textarea
+              id="task-description"
+              [(ngModel)]="newTask.description"
+              name="description"
+              placeholder="Enter task description (optional)"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="task-type">Task Type</label>
+            <select
+              id="task-type"
+              [(ngModel)]="newTask.task_type"
+              name="task_type"
+              required
+            >
+              <option value="personal">Personal</option>
+              <option value="work">Work</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn-primary">Create Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
 </main>

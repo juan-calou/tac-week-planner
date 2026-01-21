@@ -18,6 +18,7 @@ def init_db():
             description TEXT,
             day_of_week TEXT NOT NULL,
             time_slot TEXT NOT NULL,
+            task_type TEXT NOT NULL,
             completed INTEGER DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

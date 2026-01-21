@@ -19,6 +19,7 @@ def test_create_task(client):
         "description": "Weekly team sync",
         "day_of_week": "Monday",
         "time_slot": "10:00 AM",
+        "task_type": "work",
         "completed": False
     }
 
@@ -29,6 +30,7 @@ def test_create_task(client):
     assert data["description"] == task_data["description"]
     assert data["day_of_week"] == task_data["day_of_week"]
     assert data["time_slot"] == task_data["time_slot"]
+    assert data["task_type"] == task_data["task_type"]
     assert data["completed"] == task_data["completed"]
     assert "id" in data
     assert "created_at" in data
@@ -44,6 +46,7 @@ def test_get_all_tasks(client):
             "description": "First task",
             "day_of_week": "Monday",
             "time_slot": "09:00 AM",
+            "task_type": "work",
             "completed": False
         },
         {
@@ -51,6 +54,7 @@ def test_get_all_tasks(client):
             "description": "Second task",
             "day_of_week": "Tuesday",
             "time_slot": "02:00 PM",
+            "task_type": "personal",
             "completed": True
         }
     ]
@@ -74,6 +78,7 @@ def test_update_task(client):
         "description": "Original description",
         "day_of_week": "Wednesday",
         "time_slot": "11:00 AM",
+        "task_type": "work",
         "completed": False
     }
 
@@ -93,6 +98,7 @@ def test_update_task(client):
     assert data["completed"] is True
     assert data["description"] == "Original description"  # Should remain unchanged
     assert data["day_of_week"] == "Wednesday"  # Should remain unchanged
+    assert data["task_type"] == "work"  # Should remain unchanged
 
 
 def test_delete_task(client):
@@ -103,6 +109,7 @@ def test_delete_task(client):
         "description": "Will be deleted",
         "day_of_week": "Friday",
         "time_slot": "03:00 PM",
+        "task_type": "work",
         "completed": False
     }
 
@@ -155,6 +162,7 @@ def test_create_task_invalid_day_of_week(client):
         "title": "Test Task",
         "day_of_week": "Funday",  # Invalid day
         "time_slot": "10:00 AM",
+        "task_type": "work",
         "completed": False
     }
 
@@ -169,18 +177,21 @@ def test_tasks_ordered_by_day_and_time(client):
             "title": "Friday Task",
             "day_of_week": "Friday",
             "time_slot": "10:00 AM",
+            "task_type": "work",
             "completed": False
         },
         {
             "title": "Monday Task",
             "day_of_week": "Monday",
             "time_slot": "09:00 AM",
+            "task_type": "personal",
             "completed": False
         },
         {
             "title": "Wednesday Task",
             "day_of_week": "Wednesday",
             "time_slot": "02:00 PM",
+            "task_type": "other",
             "completed": False
         }
     ]
@@ -195,3 +206,37 @@ def test_tasks_ordered_by_day_and_time(client):
     assert data[0]["day_of_week"] == "Monday"
     assert data[1]["day_of_week"] == "Wednesday"
     assert data[2]["day_of_week"] == "Friday"
+
+
+def test_create_task_invalid_type(client):
+    """Test creating task with invalid task_type returns 422."""
+    invalid_task = {
+        "title": "Test Task",
+        "day_of_week": "Monday",
+        "time_slot": "10:00 AM",
+        "task_type": "invalid_type",
+        "completed": False
+    }
+
+    response = client.post("/api/tasks", json=invalid_task)
+    assert response.status_code == 422
+
+
+def test_create_task_with_different_types(client):
+    """Test creating tasks with all valid task_type values."""
+    valid_types = ["personal", "work", "other"]
+
+    for task_type in valid_types:
+        task_data = {
+            "title": f"{task_type.capitalize()} Task",
+            "description": f"A {task_type} task",
+            "day_of_week": "Monday",
+            "time_slot": "10:00 AM",
+            "task_type": task_type,
+            "completed": False
+        }
+
+        response = client.post("/api/tasks", json=task_data)
+        assert response.status_code == 201
+        data = response.json()
+        assert data["task_type"] == task_type
