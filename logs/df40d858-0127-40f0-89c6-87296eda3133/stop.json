@@ -1,0 +1,10 @@
+[
+  {
+    "session_id": "df40d858-0127-40f0-89c6-87296eda3133",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/df40d858-0127-40f0-89c6-87296eda3133.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "Stop",
+    "stop_hook_active": false
+  }
+]
