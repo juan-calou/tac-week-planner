@@ -1,0 +1,84 @@
+[
+  {
+    "type": "queue-operation",
+    "operation": "dequeue",
+    "timestamp": "2026-01-21T13:59:48.412Z",
+    "sessionId": "a764bc33-e150-4330-b980-24f113220278"
+  },
+  {
+    "parentUuid": null,
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "a764bc33-e150-4330-b980-24f113220278",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": "<command-message>classify_issue</command-message>\n<command-name>/classify_issue</command-name>\n<command-args>{\n  \"number\": 3,\n  \"title\": \"Add dates to title\",\n  \"body\": \"/chore\\n\\nAdd dates (from - to) to the title of the page where is says week number. Use MM/DD/YYYY date format. The title should read \\\"Week ## (MM/DD/YYYY to MM/DD/YYYY)\\\"\",\n  \"state\": \"OPEN\",\n  \"author\": {\n    \"id\": \"MDQ6VXNlcjYzNzk5MTg0\",\n    \"login\": \"juan-calou\",\n    \"name\": \"Juan Calou\",\n    \"is_bot\": false\n  },\n  \"assignees\": [],\n  \"labels\": [],\n  \"milestone\": null,\n  \"comments\": [\n    {\n      \"id\": \"IC_kwDOQ9zas87hM-O4\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u2705 Starting ADW workflow\",\n      \"createdAt\": \"2026-01-21T13:58:21Z\",\n      \"updatedAt\": null\n    },\n    {\n      \"id\": \"IC_kwDOQ9zas87hM-VX\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u2705 Issue classified as: /chore\",\n      \"createdAt\": \"2026-01-21T13:58:27Z\",\n      \"updatedAt\": null\n    },\n    {\n      \"id\": \"IC_kwDOQ9zas87hM_Jz\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u274c Error creating branch: Error executing Claude Code: [Errno 2] No such file or directory: '/Users/muni/code/tac-week-planner/agents/6dcacf6b/branch_generator/raw_output.json'\",\n      \"createdAt\": \"2026-01-21T13:59:14Z\",\n      \"updatedAt\": null\n    }\n  ],\n  \"createdAt\": \"2026-01-21T13:47:15Z\",\n  \"updatedAt\": \"2026-01-21T13:59:14Z\",\n  \"closedAt\": null,\n  \"url\": \"https://github.com/juan-calou/tac-week-planner/issues/3\"\n}</command-args>"
+    },
+    "uuid": "e942f0d4-fe0d-4e20-82da-e90cd97fdd13",
+    "timestamp": "2026-01-21T13:59:48.583Z"
+  },
+  {
+    "parentUuid": "e942f0d4-fe0d-4e20-82da-e90cd97fdd13",
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "a764bc33-e150-4330-b980-24f113220278",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "# Github Issue Command Selection\n\nBased on the `Github Issue` below, follow the `Instructions` to select the appropriate command to execute based on the `Command Mapping`.\n\n## Instructions\n\n- Based on the details in the `Github Issue`, select the appropriate command to execute.\n- Respond exclusively with '/' followed by the command to execute.\n- Use the command mapping to help you decide which command to respond with.\n- Think hard about the command to execute.\n\n## Command Mapping\n\n- Respond with `/chore` if the issue is a chore.\n- Respond with `/bug` if the issue is a bug.\n- Respond with `/feature` if the issue is a feature.\n- Respond with `0` if the issue isn't any of the above.\n\n## Github Issue\n\n{\n  \"number\": 3,\n  \"title\": \"Add dates to title\",\n  \"body\": \"/chore\\n\\nAdd dates (from - to) to the title of the page where is says week number. Use MM/DD/YYYY date format. The title should read \\\"Week ## (MM/DD/YYYY to MM/DD/YYYY)\\\"\",\n  \"state\": \"OPEN\",\n  \"author\": {\n    \"id\": \"MDQ6VXNlcjYzNzk5MTg0\",\n    \"login\": \"juan-calou\",\n    \"name\": \"Juan Calou\",\n    \"is_bot\": false\n  },\n  \"assignees\": [],\n  \"labels\": [],\n  \"milestone\": null,\n  \"comments\": [\n    {\n      \"id\": \"IC_kwDOQ9zas87hM-O4\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u2705 Starting ADW workflow\",\n      \"createdAt\": \"2026-01-21T13:58:21Z\",\n      \"updatedAt\": null\n    },\n    {\n      \"id\": \"IC_kwDOQ9zas87hM-VX\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u2705 Issue classified as: /chore\",\n      \"createdAt\": \"2026-01-21T13:58:27Z\",\n      \"updatedAt\": null\n    },\n    {\n      \"id\": \"IC_kwDOQ9zas87hM_Jz\",\n      \"author\": {\n        \"id\": null,\n        \"login\": \"juan-calou\",\n        \"name\": null,\n        \"is_bot\": false\n      },\n      \"body\": \"6dcacf6b_ops: \u274c Error creating branch: Error executing Claude Code: [Errno 2] No such file or directory: '/Users/muni/code/tac-week-planner/agents/6dcacf6b/branch_generator/raw_output.json'\",\n      \"createdAt\": \"2026-01-21T13:59:14Z\",\n      \"updatedAt\": null\n    }\n  ],\n  \"createdAt\": \"2026-01-21T13:47:15Z\",\n  \"updatedAt\": \"2026-01-21T13:59:14Z\",\n  \"closedAt\": null,\n  \"url\": \"https://github.com/juan-calou/tac-week-planner/issues/3\"\n}"
+        }
+      ]
+    },
+    "isMeta": true,
+    "uuid": "9cc1e2f7-0a06-4193-9dd9-769dcd035256",
+    "timestamp": "2026-01-21T13:59:48.583Z"
+  },
+  {
+    "parentUuid": "9cc1e2f7-0a06-4193-9dd9-769dcd035256",
+    "isSidechain": false,
+    "userType": "external",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "sessionId": "a764bc33-e150-4330-b980-24f113220278",
+    "version": "2.1.14",
+    "gitBranch": "main",
+    "message": {
+      "model": "claude-sonnet-4-5-20250929",
+      "id": "msg_01MHk8uGbWsNv9RHhUrYEN3w",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "/chore"
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "usage": {
+        "input_tokens": 3,
+        "cache_creation_input_tokens": 4964,
+        "cache_read_input_tokens": 15193,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 4964,
+          "ephemeral_1h_input_tokens": 0
+        },
+        "output_tokens": 1,
+        "service_tier": "standard"
+      }
+    },
+    "requestId": "req_011CXLeGqVC5CzgRznNNB5R1",
+    "type": "assistant",
+    "uuid": "63bb3b70-9b9f-44ca-a74f-35642763f2f5",
+    "timestamp": "2026-01-21T13:59:51.936Z"
+  }
+]

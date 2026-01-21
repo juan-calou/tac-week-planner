@@ -1,0 +1,15 @@
+[
+  {
+    "session_id": "9750f17a-4502-46e4-b19f-0c7c8902f7f4",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/9750f17a-4502-46e4-b19f-0c7c8902f7f4.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git pull && git checkout -b chore-3-6dcacf6b-add-dates-to-title",
+      "description": "Pull latest and create new branch"
+    },
+    "tool_use_id": "toolu_01SFu3BLeiLHShDQBpn268Nv"
+  }
+]

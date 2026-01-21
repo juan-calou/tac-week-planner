@@ -1,0 +1,3 @@
+/chore Add dates to title: /chore
+
+Add dates (from - to) to the title of the page where is says week number. Use MM/DD/YYYY date format. The title should read "Week ## (MM/DD/YYYY to MM/DD/YYYY)"

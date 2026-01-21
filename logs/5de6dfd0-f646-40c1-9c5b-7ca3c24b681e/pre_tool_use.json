@@ -1,0 +1,77 @@
+[
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/src/app/models/task.model.ts"
+    },
+    "tool_use_id": "toolu_01JXtAShKRVL1QyAfTkuCoPV"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "ls -la /Users/muni/code/tac-week-planner/specs/ 2>/dev/null || echo \"specs directory does not exist\"",
+      "description": "Check if specs directory exists"
+    },
+    "tool_use_id": "toolu_01SjazA6BpAn4ydDJq9eQFNS"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/specs/chore-1-display-7-days-week.md"
+    },
+    "tool_use_id": "toolu_01LPtyJENqfVsBXAXczK3jjC"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/app/client/package.json"
+    },
+    "tool_use_id": "toolu_019NN5iC1yyeXQwMTeiYjUsq"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "ls -la /Users/muni/code/tac-week-planner/app/client/ | grep -E \"(test|spec|karma|jest)\"",
+      "description": "Check for test configuration"
+    },
+    "tool_use_id": "toolu_01798vfDhFxFrGeuHP8LtSvk"
+  },
+  {
+    "session_id": "5de6dfd0-f646-40c1-9c5b-7ca3c24b681e",
+    "transcript_path": "/Users/muni/.claude/projects/-Users-muni-code-tac-week-planner/5de6dfd0-f646-40c1-9c5b-7ca3c24b681e.jsonl",
+    "cwd": "/Users/muni/code/tac-week-planner",
+    "permission_mode": "bypassPermissions",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/muni/code/tac-week-planner/specs/chore-3-add-dates-to-title.md",
+      "content": "# Chore: Add Dates to Title\n\n## Chore Description\nUpdate the main page title to include the date range for the current week. The title currently displays only \"Week ##\" but should now display \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\" where the dates represent the Monday (start) and Sunday (end) of the current week using the MM/DD/YYYY date format.\n\nThis enhancement provides users with immediate context about the exact date range they are viewing, making the weekly planner more informative and easier to use when planning tasks.\n\n## Relevant Files\nUse these files to resolve the chore:\n\n- `app/client/src/app/app.component.ts` - Main component TypeScript file\n  - Add a new property to store the formatted date range string\n  - Create a helper method to format dates in MM/DD/YYYY format\n  - Update the ngOnInit() method to calculate and store the week's start date (Monday) and end date (Sunday)\n  - Generate the complete title string with the date range\n\n- `app/client/src/app/app.component.html` - Main component template file\n  - Update the header section to display the new title format with dates\n  - Replace `<h1>Week {{ weekNumber }}</h1>` with `<h1>{{ weekTitle }}</h1>` to show the complete title including date range\n\n## Step by Step Tasks\nIMPORTANT: Execute every step in order, top to bottom.\n\n### 1. Update App Component TypeScript\n- Open `app/client/src/app/app.component.ts`\n- Add a new property `weekTitle: string = '';` to store the complete title with date range\n- Create a new helper method `formatDateMMDDYYYY(date: Date): string` that:\n  - Takes a Date object as input\n  - Returns a string in MM/DD/YYYY format\n  - Uses zero-padding for single-digit months and days (e.g., \"01/05/2026\" not \"1/5/2026\")\n- Update the `ngOnInit()` method to:\n  - Calculate the Monday of the current week (already done with getMonday method)\n  - Calculate the Sunday of the current week by adding 6 days to Monday\n  - Format both Monday and Sunday dates using the new formatDateMMDDYYYY method\n  - Build the complete title string: `Week ${weekNumber} (${mondayFormatted} to ${sundayFormatted})`\n  - Assign this string to the weekTitle property\n\n### 2. Update App Component HTML\n- Open `app/client/src/app/app.component.html`\n- Locate the header section containing `<h1>Week {{ weekNumber }}</h1>`\n- Replace `{{ weekNumber }}` with `{{ weekTitle }}` so the line reads: `<h1>{{ weekTitle }}</h1>`\n- This change will display the complete title with date range instead of just the week number\n\n### 3. Run Validation Commands\n- Execute all validation commands listed below to ensure the chore is complete with zero regressions\n- Verify the application compiles without TypeScript errors\n- Verify server tests pass to ensure no backend regressions\n- Start the application and manually verify the title displays in the correct format: \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Validation Commands\nExecute every command to validate the chore is complete with zero regressions.\n\n- `cd app/client && npm run build` - Build the Angular client to validate TypeScript compilation and catch any errors\n- `cd app/server && uv run pytest` - Run server tests to validate the chore is complete with zero regressions\n- `./scripts/start.sh` - Start both client and server to manually verify the title displays correctly at http://localhost:4200 with the format \"Week ## (MM/DD/YYYY to MM/DD/YYYY)\"\n\n## Notes\n- The MM/DD/YYYY format requires zero-padding (e.g., \"01/05/2026\" not \"1/5/2026\")\n- The week always starts on Monday and ends on Sunday, consistent with the existing week calculation logic\n- The existing weekNumber property is still used to calculate the week number, but the display now uses the weekTitle property\n- This is a display-only change and does not affect any backend functionality or data models\n- The date range will automatically update based on the current date when the component initializes\n"
+    },
+    "tool_use_id": "toolu_01WBAn7h6Xwxkc4vVZwkTtnQ"
+  }
+]
