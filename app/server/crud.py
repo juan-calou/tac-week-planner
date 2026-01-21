@@ -1,35 +1,34 @@
-from sqlite3 import Connection
 from datetime import datetime
 from typing import List, Optional, Dict, Any
-import pandas as pd
 from models import TaskCreate, TaskUpdate
 
 
-def create_task(conn: Connection, task_data: TaskCreate) -> int:
+def create_task(db, task_data: TaskCreate) -> Dict[str, Any]:
     """Create a new task in the database."""
-    cursor = conn.cursor()
-    now = datetime.now().isoformat()
-    cursor.execute("""
+    now = datetime.utcnow().isoformat()
+
+    result = db.execute("""
         INSERT INTO tasks (title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
+    """, [
         task_data.title,
         task_data.description,
         task_data.day_of_week,
         task_data.time_slot,
         task_data.task_type,
-        int(task_data.completed),
+        1 if task_data.completed else 0,
         now,
         now
-    ))
-    conn.commit()
-    return cursor.lastrowid
+    ])
+
+    # Get the created task
+    task_id = result.last_insert_rowid
+    return get_task_by_id(db, task_id)
 
 
-def get_all_tasks(conn: Connection) -> List[Dict[str, Any]]:
+def get_all_tasks(db) -> List[Dict[str, Any]]:
     """Retrieve all tasks from the database."""
-    cursor = conn.cursor()
-    cursor.execute("""
+    result = db.execute("""
         SELECT id, title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at
         FROM tasks
         ORDER BY
@@ -45,40 +44,53 @@ def get_all_tasks(conn: Connection) -> List[Dict[str, Any]]:
             time_slot
     """)
 
-    rows = cursor.fetchall()
+    tasks = []
+    for row in result.rows:
+        tasks.append({
+            'id': row[0],
+            'title': row[1],
+            'description': row[2],
+            'day_of_week': row[3],
+            'time_slot': row[4],
+            'task_type': row[5],
+            'completed': bool(row[6]),
+            'created_at': row[7],
+            'updated_at': row[8]
+        })
 
-    # Convert to list of dictionaries using pandas for data transformation
-    if rows:
-        df = pd.DataFrame([dict(row) for row in rows])
-        # Convert completed from int to bool
-        df['completed'] = df['completed'].astype(bool)
-        return df.to_dict('records')
-    return []
+    return tasks
 
 
-def get_task_by_id(conn: Connection, task_id: int) -> Optional[Dict[str, Any]]:
+def get_task_by_id(db, task_id: int) -> Optional[Dict[str, Any]]:
     """Get a single task by ID."""
-    cursor = conn.cursor()
-    cursor.execute("""
+    result = db.execute("""
         SELECT id, title, description, day_of_week, time_slot, task_type, completed, created_at, updated_at
         FROM tasks
         WHERE id = ?
-    """, (task_id,))
+    """, [task_id])
 
-    row = cursor.fetchone()
-    if row:
-        task = dict(row)
-        task['completed'] = bool(task['completed'])
-        return task
+    if result.rows:
+        row = result.rows[0]
+        return {
+            'id': row[0],
+            'title': row[1],
+            'description': row[2],
+            'day_of_week': row[3],
+            'time_slot': row[4],
+            'task_type': row[5],
+            'completed': bool(row[6]),
+            'created_at': row[7],
+            'updated_at': row[8]
+        }
     return None
 
 
-def update_task(conn: Connection, task_id: int, task_data: TaskUpdate) -> bool:
+def update_task(db, task_id: int, task_data: TaskUpdate) -> Optional[Dict[str, Any]]:
     """Update an existing task."""
     # Get current task to check if it exists
-    existing_task = get_task_by_id(conn, task_id)
+    existing_task = get_task_by_id(db, task_id)
     if not existing_task:
-        return False
+        return None
 
     # Build update query dynamically based on provided fields
     update_fields = []
@@ -102,7 +114,7 @@ def update_task(conn: Connection, task_id: int, task_data: TaskUpdate) -> bool:
 
     if task_data.completed is not None:
         update_fields.append("completed = ?")
-        values.append(int(task_data.completed))
+        values.append(1 if task_data.completed else 0)
 
     if task_data.task_type is not None:
         update_fields.append("task_type = ?")
@@ -110,23 +122,19 @@ def update_task(conn: Connection, task_id: int, task_data: TaskUpdate) -> bool:
 
     # Always update updated_at
     update_fields.append("updated_at = ?")
-    values.append(datetime.now().isoformat())
+    values.append(datetime.utcnow().isoformat())
 
     # Add task_id for WHERE clause
     values.append(task_id)
 
     query = f"UPDATE tasks SET {', '.join(update_fields)} WHERE id = ?"
 
-    cursor = conn.cursor()
-    cursor.execute(query, values)
-    conn.commit()
+    db.execute(query, values)
 
-    return cursor.rowcount > 0
+    return get_task_by_id(db, task_id)
 
 
-def delete_task(conn: Connection, task_id: int) -> bool:
+def delete_task(db, task_id: int) -> bool:
     """Delete a task by ID."""
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
-    conn.commit()
-    return cursor.rowcount > 0
+    result = db.execute("DELETE FROM tasks WHERE id = ?", [task_id])
+    return result.rows_affected > 0

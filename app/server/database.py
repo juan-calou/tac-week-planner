@@ -1,51 +1,74 @@
-import sqlite3
-from contextlib import contextmanager
-from pathlib import Path
+import os
+import asyncio
+from libsql_client import create_client_sync
+from datetime import datetime
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
-DATABASE_PATH = Path(__file__).parent / "tasks.db"
+# Get Turso database credentials from environment
+TURSO_DATABASE_URL = os.getenv("TURSO_DATABASE_URL", "")
+TURSO_AUTH_TOKEN = os.getenv("TURSO_AUTH_TOKEN", "")
+
+# Create Turso client
+client = None
+if TURSO_DATABASE_URL and TURSO_AUTH_TOKEN:
+    try:
+        # Convert libsql:// to https:// for HTTP protocol (more reliable than WebSocket)
+        connection_url = TURSO_DATABASE_URL.replace("libsql://", "https://")
+        client = create_client_sync(
+            url=connection_url,
+            auth_token=TURSO_AUTH_TOKEN
+        )
+        print("Connected to Turso database")
+    except Exception as e:
+        print(f"Failed to connect to Turso: {e}")
+        client = None
+else:
+    print("Warning: TURSO_DATABASE_URL or TURSO_AUTH_TOKEN not set.")
 
 
 def init_db():
     """Initialize the database and create tables if they don't exist."""
-    conn = sqlite3.connect(DATABASE_PATH)
-    cursor = conn.cursor()
+    if not client:
+        print("No database client available")
+        return
 
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
-            description TEXT,
-            day_of_week TEXT NOT NULL,
-            time_slot TEXT NOT NULL,
-            task_type TEXT NOT NULL,
-            completed INTEGER DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-
-    conn.commit()
-    conn.close()
-
-
-@contextmanager
-def get_db():
-    """Context manager for database connections."""
-    conn = sqlite3.connect(DATABASE_PATH)
-    conn.row_factory = sqlite3.Row
     try:
-        yield conn
-    finally:
-        conn.close()
+        # Create tasks table
+        client.execute("""
+            CREATE TABLE IF NOT EXISTS tasks (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                description TEXT,
+                day_of_week TEXT NOT NULL,
+                time_slot TEXT NOT NULL,
+                task_type TEXT NOT NULL,
+                completed INTEGER DEFAULT 0,
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        print("Database initialized successfully")
+    except Exception as e:
+        print(f"Database initialization failed: {e}")
+        raise
+
+
+def get_db():
+    """Get database client."""
+    if not client:
+        raise Exception("Database client not initialized")
+    return client
 
 
 def check_db_connection():
     """Check if database connection is working."""
     try:
-        with get_db() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT 1")
+        if client:
+            result = client.execute("SELECT 1")
             return True
+        return False
     except Exception:
         return False

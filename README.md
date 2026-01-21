@@ -92,13 +92,128 @@ npm run build              # Build for production
 npm run test               # Run tests
 ```
 
+## Vercel Deployment
+
+This project supports separate deployments for the client and server on Vercel.
+
+### Prerequisites
+
+1. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. Login to Vercel:
+   ```bash
+   vercel login
+   ```
+
+### Deploy Server (Backend)
+
+1. Navigate to the server directory:
+   ```bash
+   cd app/server
+   ```
+
+2. Deploy to Vercel:
+   ```bash
+   vercel
+   ```
+
+3. For production deployment:
+   ```bash
+   vercel --prod
+   ```
+
+4. Set environment variables in Vercel dashboard or via CLI:
+   ```bash
+   vercel env add OPENAI_API_KEY
+   vercel env add ANTHROPIC_API_KEY
+   vercel env add ALLOWED_ORIGINS
+   ```
+
+   For `ALLOWED_ORIGINS`, use your client URL (e.g., `https://your-client-app.vercel.app`)
+
+5. After deployment, note the server URL (e.g., `https://your-server-app.vercel.app`)
+
+### Deploy Client (Frontend)
+
+1. Navigate to the client directory:
+   ```bash
+   cd app/client
+   ```
+
+2. Update the production environment file:
+   Edit `src/environments/environment.prod.ts` and replace the API URL with your deployed server URL:
+   ```typescript
+   export const environment = {
+     production: true,
+     apiUrl: 'https://your-server-app.vercel.app/api'
+   };
+   ```
+
+3. Deploy to Vercel:
+   ```bash
+   vercel
+   ```
+
+4. For production deployment:
+   ```bash
+   vercel --prod
+   ```
+
+### Connect Client and Server
+
+After both deployments:
+
+1. Update the server's `ALLOWED_ORIGINS` environment variable with your client URL:
+   ```bash
+   cd app/server
+   vercel env add ALLOWED_ORIGINS production
+   # Enter: https://your-client-app.vercel.app
+   ```
+
+2. Redeploy the server to apply the changes:
+   ```bash
+   vercel --prod
+   ```
+
+### Verify Deployment
+
+1. Visit your client URL (e.g., `https://your-client-app.vercel.app`)
+2. Test the API connection by adding, editing, or deleting tasks
+3. Check the Network tab in browser DevTools to verify API requests are working
+
+### Environment Variables Reference
+
+**Server (`app/server`):**
+- `OPENAI_API_KEY` - OpenAI API key for AI features
+- `ANTHROPIC_API_KEY` - Anthropic API key for AI features
+- `ALLOWED_ORIGINS` - Comma-separated list of allowed origins (your client URL)
+
+**Client (`app/client`):**
+- API URL is configured in `src/environments/environment.prod.ts`
+
+### Useful Vercel CLI Commands
+
+```bash
+vercel --help              # Show all commands
+vercel ls                  # List all deployments
+vercel domains             # Manage custom domains
+vercel env ls              # List environment variables
+vercel logs                # View deployment logs
+vercel remove [deployment] # Remove a specific deployment
+```
+
 ## Project Structure
 
 ```
 .
 ├── app/                    # Main application
 │   ├── client/             # Angular frontend
+│   │   └── vercel.json    # Vercel configuration for client
 │   └── server/             # FastAPI backend
+│       └── vercel.json    # Vercel configuration for server
 │
 ├── adws/                   # AI Developer Workflows - Core agent system
 ├── scripts/                # Utility scripts (start.sh, stop_apps.sh)

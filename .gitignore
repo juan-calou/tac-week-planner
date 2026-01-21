@@ -21,3 +21,8 @@
 .DS_Store
 Thumbs.db
 .env
+
+# Logs
+logs/
+**/logs/
+*.log
